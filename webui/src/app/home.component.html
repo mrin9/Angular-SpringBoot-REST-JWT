@@ -1,0 +1,22 @@
+<md-toolbar id="s-main-toolbar" >
+  <s-logo class="s-home-pg-logo"></s-logo>
+  <!-- img class="s-home-pg-logo" src="/assets/images/swlogo.png" alt="Sonicwall Logo" / -->
+  <s-hnav #appNav style="height:100%;" [navItems]="toolbarNavItems" [selected]="selectedNavItem"  (selectionChange)="navbarSelectionChange($event);" ></s-hnav>
+
+  <span style="flex:1"></span>
+
+  <s-pill [size]="'medium'" [text]="Test"   [iconAlign]="'left'" [color]="'#63666A'" [hideText]="true"  [spread]="false" [rounded]="'true'" [iconCls]="'fa fa-question fa-lg'"></s-pill>
+  <s-pill [size]="'medium'" [text]="Test"   [iconAlign]="'left'" [color]="'#63666A'" [hideText]="true"  [spread]="false" [rounded]="'true'" [iconCls]="'fa fa-bell fa-lg'" (click)="onAlertClick($event)"  md-tooltip="Alerts" tooltip-position="below" ></s-pill>
+  <s-pill [size]="'medium'" [text]="Test"   [iconAlign]="'left'" [color]="'#63666A'" [hideText]="true"  [spread]="false" [rounded]="'true'" [iconCls]="'fa fa-power-off fa-lg'" (click)="onLogout($event)" md-tooltip="Logout" tooltip-position="below"> </s-pill>
+  <s-pill [size]="'medium'" [text]="userName" [iconAlign]="'right'" [color]="'#63666A'" [hideText]="false" [spread]="false" [rounded]="'true'" [iconCls]="'fa fa-user fa-lg'"></s-pill>
+</md-toolbar>
+
+<md-sidenav-container class="s-home-pg">
+  <router-outlet></router-outlet>
+  <md-sidenav #alertSideNav align="end">
+    <md-toolbar [color]="primary" >
+      <span>Application Alerts</span>
+    </md-toolbar>
+    <button md-button (click)="alertSideNav.close()">Close</button>
+  </md-sidenav>
+</md-sidenav-container>

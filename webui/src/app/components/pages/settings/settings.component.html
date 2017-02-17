@@ -1,0 +1,19 @@
+<div class="s-settings-pg">
+    <clr-tabs (clrTabsCurrentTabLinkChanged)="onTabSelected($event)"
+              (clrTabsCurrentTabIndexChanged)="onTabIndexChanged($event)"
+              (clrTabsCurrentTabContentChanged)="onTabContentActivated($event)">
+        <clr-tab-link>Dashboard</clr-tab-link>
+        <clr-tab-link [clrTabLinkId]="'link1'" [clrTabLinkActive]="true">Management</clr-tab-link>
+        <clr-tab-link>Cloud</clr-tab-link>
+
+        <clr-tab-content>
+            <p>Content for Dashboard settings</p>
+        </clr-tab-content>
+        <clr-tab-content [clrTabContentId]="'content1'" [clrTabContentActive]="true">
+            <p>Content for Management Settings.</p>
+        </clr-tab-content>
+        <clr-tab-content>
+            <p>Content for Cloud Settings.</p>
+        </clr-tab-content>
+    </clr-tabs>
+</div>

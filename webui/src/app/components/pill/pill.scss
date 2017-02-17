@@ -1,0 +1,16 @@
+@import '../../../assets/scss/var/var';
+.s-pill-wrap{
+    overflow: hidden;
+    //display : inline-block;
+    display : flex;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    align-items: center;
+    margin:0 7px;
+    color :$s-c-white;
+    background-color:$s-c-soft-white;
+    //background-color:$s-c-soft-white;
+}
+.s-pill-icon{
+  cursor: pointer;
+}

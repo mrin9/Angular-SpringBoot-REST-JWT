@@ -1,0 +1,54 @@
+<div class="s-dashboard-pg">
+
+    <div class="chart-box">
+      <h4> Incidents by Serverity </h4>
+      <ngx-charts-advanced-pie-chart
+        style="position:relative"
+        [view]="view"
+        [scheme]="colorSchemeSeverity"
+        [results]="incidentBySeverityData"
+      >
+      </ngx-charts-advanced-pie-chart>
+    </div>
+
+    <div class="chart-box">
+      <h4> Incidents by Status </h4>
+      <ngx-charts-advanced-pie-chart
+        style="position:relative"
+        [view]="view"
+        [scheme]="colorSchemeStatus"
+        [results]="incidentByStatusData"
+      >
+      </ngx-charts-advanced-pie-chart>
+    </div>
+
+  <div class="chart-box">
+    <h4> Incidents by Severity and Status </h4>
+      <ngx-charts-bar-vertical-stacked
+        [view]="[550, 200]"
+        [scheme]="colorSchemeStatus"
+        [results]="incidentBySeverityAndStatusData"
+        [xAxis]="true"
+        [yAxis]="true"
+        [legend]="true"
+        [showXAxisLabel]="false"
+        [showYAxisLabel]="false"
+        [showGridLines]="false"
+      >
+      </ngx-charts-bar-vertical-stacked>
+  </div>
+
+<ngx-datatable
+  style='height:248px; width:585px;margin:16px;border-radius:2px;'
+  [rows]="rows"
+  [columns]="columns"
+  [headerHeight]="45"
+  [rowHeight]="32"
+  [columnMode]="'standard'"
+  [scrollbarV]="false"
+  >
+  </ngx-datatable>
+
+
+
+</div>

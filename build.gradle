@@ -1,0 +1,91 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.1.RELEASE")
+    }
+}
+
+/**
+ * Include the gradle-download-task plugin
+ */
+plugins {
+    id 'de.undercouch.download' version '3.2.0'
+}
+import de.undercouch.gradle.tasks.download.Download
+
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+
+jar {
+    baseName = 'app'
+    version =  '1.0.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-tomcat")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("io.springfox:springfox-swagger2:2.6.1")
+    compile("io.springfox:springfox-swagger-ui:2.6.1")
+    compile group: 'org.slf4j'            , name: 'slf4j-api' , version: '1.7.22'
+    compile group: 'io.jsonwebtoken'      , name: 'jjwt'      , version: '0.7.0'
+    compile group: 'com.google.guava'     , name: 'guava'     , version: '21.0'
+    compile group: 'com.github.javafaker' , name: 'javafaker' , version: '0.12'
+    compile group: 'joda-time'            , name: 'joda-time' , version: '2.9.7'
+    compile group: 'commons-io'           , name: 'commons-io', version: '2.5'
+    compile group: 'org.json'             , name: 'json'      , version: '20160810'
+    compile group: 'org.projectlombok'    , name: 'lombok'    , version: '1.16.12'
+    runtime("com.h2database:h2")
+    runtime("mysql:mysql-connector-java")
+}
+
+
+
+task removeWebui(type: Delete) {
+    delete "${sourceSets.main.resources.srcDirs[0]}/webui"
+}
+
+task copyWebui(type: Copy) {
+    from "webui/dist"
+    into "${sourceSets.main.resources.srcDirs[0]}/webui"
+    exclude "*.gz"
+    //eachFile { println it.name }
+}
+
+task downloadRedoc(type: Download) {
+    src  "https://rebilly.github.io/ReDoc/releases/latest/redoc.min.js"
+    dest "${sourceSets.main.resources.srcDirs[0]}/public/redoc"
+    overwrite true
+}
+
+task var << {
+	sourceSets {
+		main {
+			println "java.srcDirs = ${java.srcDirs}"
+			println "resources.srcDirs = ${resources.srcDirs[0]}"
+			println "output.classesDir = ${output.classesDir}"
+			println "output.resourcesDir = ${output.resourcesDir}"
+		}
+	}
+}
+
+
+compileJava.dependsOn downloadRedoc
+copyWebui.dependsOn removeWebui
+compileJava.dependsOn copyWebui
+

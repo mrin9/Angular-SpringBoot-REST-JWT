@@ -1,0 +1,32 @@
+@import '../../../assets/scss/var/var';
+.s-hnav{
+  height:100%;
+  position:relative;
+  .s-hnav-wrap{
+    display:flex;
+    height:100%;
+      .s-nav-item {
+        display:flex;
+        align-items: center;
+        padding :0 5px;
+        .s-nav-label{
+          align-self: flex-end;
+          padding: 10px 5px;
+          cursor: pointer;
+        }
+      }
+  }
+
+  .s-hnav-inkbar{
+    position:absolute;
+    border:1px solid $s-c-primary ;
+    background-color: $s-c-primary ;
+    height:1px;
+    bottom:0;
+    transition: width 0.2s, left 0.2s;
+  }
+}
+
+.s-new-flex-row {
+  flex-flow: row wrap;
+}

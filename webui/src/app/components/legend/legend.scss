@@ -1,0 +1,28 @@
+@import '../../../assets/scss/var/var';
+.s-legend-wrap{
+  display:flex;
+  flex-direction: row;
+  margin:5px 0;
+  .s-legend-item{
+    display:flex;
+    flex-direction: row;
+    height:32px;
+    margin-right:20px;
+    align-items:stretch;
+    .s-legend-color{
+      width:5px;
+    }
+    .s-legend-value-wrap{
+      margin:0px 3px;
+    }
+    .s-legend-label{
+      font-size:12px;
+      height:14px;
+      line-height: 15px;
+    }
+    .s-legend-value{
+      font-size:18px;
+      height:18px;
+    }
+  }
+}

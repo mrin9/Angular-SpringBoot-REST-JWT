@@ -1,0 +1,26 @@
+.policy-detail-pg {
+    border:1px solid #ccc;
+    border-radius:2px;
+    width:1000px;
+    min-height:400px;
+    background-color: #fff;
+    margin:16px;
+    padding:0px 16px 16px 16px;
+
+    .policy-tab{
+      display: flex;
+      margin:24px 0;
+      flex-direction: column;
+    }
+
+    md-input-container label{
+      font-size:11px !important;
+      color:gray;
+      margin:0 0 3px 0;
+    }
+    md-slide-toggle{
+      display:inline;
+    }
+}
+
+

@@ -1,0 +1,101 @@
+<div class="s-alerts"
+     [ngStyle]="{
+        'width':width+'px'
+     }"
+>
+  <div *ngIf="showHeader" class="s-alerts-hbar">
+    <span class="s-alerts-left-icon fa fa-chevron-left s-f-medium"
+      (click)="leftIconClick()"
+      [ngStyle]="{
+          'width':headerLeftIconWidth+'px'
+      }"
+    > </span>
+    <span class="s-alerts-head-text s-f-small"> {{headerText}}  </span>
+    <span class="s-alerts-right-icon fa fa-gear s-f-medium"
+     (click)="rightIconClick()"
+     [ngStyle]="{
+        'width':headerRightIconWidth+'px'
+     }"
+     > </span>
+  </div>
+
+  <div class="s-alerts-body">
+
+    <div class="s-alerts-page1">
+      <h1> There are no alerts </h1>
+    </div>
+    <!-- PAGE 2 -->
+    <div class="s-alerts-page2" [ngStyle]="{'left':page2Left, 'width':page2Width}" >
+      <div class="s-section-head">
+        All SonicWALL Products
+      </div>
+      <div class="s-section-body">
+        <table class="s-alert-opions">
+          <tr> <th style="width:160px">    </th> <th style="width:35px;">email </th> <th style="width:35px;">in-app </th> </tr>
+          <tr>
+            <td>New upgrades available </td>
+            <td>  <md-slide-toggle color="primary" [checked]="true"></md-slide-toggle> </td>
+            <td>  <md-slide-toggle color="primary" [checked]="true"></md-slide-toggle> </td>
+          </tr>
+          <tr> <td>New products & features </td>
+            <td>  <md-slide-toggle color="primary" [checked]="true"></md-slide-toggle> </td>
+            <td>  <md-slide-toggle color="primary" [checked]="true"></md-slide-toggle> </td>
+          </tr>
+        </table>
+      </div>
+
+
+      <div class="s-section-head">
+        Maintainance
+      </div>
+      <div class="s-section-body">
+        <table class="s-alert-opions">
+          <tr> <th style="width:160px">    </th> <th style="width:35px;"> </th> <th style="width:35px;"> </th> </tr>
+          <tr>
+            <td>Infrastructure Updates </td>
+            <td>  <md-slide-toggle color="primary" [checked]="true"></md-slide-toggle> </td>
+            <td>  <md-slide-toggle color="primary" [checked]="true"></md-slide-toggle> </td>
+          </tr>
+          <tr> <td>Vulnerabilities and Issues </td>
+            <td>  <md-slide-toggle color="primary" [checked]="true"></md-slide-toggle> </td>
+            <td>  <md-slide-toggle color="primary"></md-slide-toggle> </td>
+          </tr>
+        </table>
+      </div>
+
+
+      <div class="s-section-head">
+        Security blogs
+      </div>
+      <div class="s-section-body">
+        <table class="s-alert-opions">
+          <tr> <th style="width:160px">    </th> <th style="width:35px;"> </th> <th style="width:35px;"> </th> </tr>
+          <tr>
+            <td>Security Center </td>
+            <td>  <md-slide-toggle color="primary" [checked]="true"></md-slide-toggle> </td>
+            <td>  <md-slide-toggle color="primary"></md-slide-toggle> </td>
+          </tr>
+          <tr>
+            <td>Security Community</td>
+            <td>  <md-slide-toggle color="primary" [checked]="true"></md-slide-toggle> </td>
+            <td>  <md-slide-toggle color="primary"></md-slide-toggle> </td>
+          </tr>
+          <tr>
+            <td>Threat Protection</td>
+            <td>  <md-slide-toggle color="primary" [checked]="true"></md-slide-toggle> </td>
+            <td>  <md-slide-toggle color="primary"></md-slide-toggle> </td>
+          </tr>
+        </table>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <div *ngIf="showFooter" class="s-alerts-fbar">
+    <span class="s-alerts-left-icon"> </span>
+    <span class="s-alerts-text s-f-small">{{footerText}}  </span>
+    <span class="s-alerts-right-icon"> </span>
+  </div>
+</div>

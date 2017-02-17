@@ -1,0 +1,72 @@
+import { Component, OnInit, OnChanges, SimpleChange, Input, Output, ElementRef, AfterViewInit,  ViewChild, Renderer, EventEmitter, HostListener  } from '@angular/core';
+import { ItemDescrModel} from '../../../models/item-descr.model';
+import { Router } from '@angular/router';
+
+@Component({
+	selector: 's-signup-pg',
+  styleUrls: [ './signup.scss'],
+	templateUrl: './signup.component.html'
+})
+
+export class SignupComponent  {
+  public frmSignUp: Object = {};
+  public acceptInvite:boolean = false;
+  public emailVerified:boolean = false;
+
+  @Input() public wizSteps: ItemDescrModel[];
+
+  public invitedByCompanyName = "Walmart";
+  public invitedByCompanyPhone= "000-000-0000";
+
+  constructor(private router: Router) {
+    this.wizSteps=[
+      {itemId:'1', itemDescr:'Company Info', status:'active'},
+      {itemId:'2', itemDescr:'Your Account', status:'pending'},
+      {itemId:'3', itemDescr:'Verify'      , status:'pending'},
+    ];
+  }
+
+  onBack(){
+    this.gotoLogin();
+  }
+
+  onDeclineAccess(){
+    this.gotoLogin();
+  }
+
+  onAcceptAccess(){
+    this.acceptInvite=true;
+  }
+
+  gotoPage1(){
+    this.wizSteps[0].status="active";
+    this.wizSteps[1].status="pending";
+    this.wizSteps[2].status="pending";
+  }
+  gotoPage2(){
+    this.wizSteps[0].status="done";
+    this.wizSteps[1].status="active";
+    this.wizSteps[2].status="pending";
+  }
+  gotoPage3(){
+    console.log(this.frmSignUp);
+    this.wizSteps[0].status="done";
+    this.wizSteps[1].status="done";
+    this.wizSteps[2].status="active";
+  }
+  gotoLogin(){
+    this.router.navigate(['login']);
+  }
+
+  finish(){
+    // Make rest call to do email varification
+    this.emailVerified = true;
+    this.wizSteps[2].status="done";
+
+  }
+
+  submitSignUpForm(){
+    console.log("Submit the form");
+
+  }
+}

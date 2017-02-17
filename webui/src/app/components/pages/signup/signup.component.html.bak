@@ -1,0 +1,181 @@
+<div class="s-signup-pg">
+  <div class="s-signup-pg-top-bar">
+    <div class="s-signup-back-btn" (click)="onBack()"> <md-icon>arrow_back </md-icon> BACK TO LOG IN </div>
+  </div>
+  <div style="height:100px; width:100%;"></div>
+  <s-logo class="s-signup-pg-logo"></s-logo>
+  <div class="s-step-row">
+    <ng-container *ngFor="let idx = index; let isFirst = first; let isLast = last; let step of wizSteps">
+        <div class="s-step"
+            [class.s-step-first]="isFirst"
+            [class.s-step-last]="isLast"
+            [class.s-step-done]="step.status=='done'"
+            [class.s-step-active]="step.status=='active'"
+            [class.s-step-pending]="step.status=='pending'"
+        >
+          <div class="s-step-circle">
+            <md-icon *ngIf="step.status =='done'">done</md-icon>
+            <div *ngIf="step.status !='done'">{{idx+1}}</div>
+          </div>
+          <div class="s-step-text"> {{step.itemDescr}} </div>
+        </div>
+        <div *ngIf="isLast == false" class="s-step-line"> </div>
+    </ng-container>
+  </div>
+
+  <!--
+  <div class="s-step-row">
+      <div class="s-step s-step-first s-step-done">
+        <div class="s-step-circle"> <md-icon>done</md-icon> </div>
+        <div class="s-step-text"> Company Info </div>
+      </div>
+      <div class="s-step-line"> </div>
+      <div class="s-step s-step-active">
+        <div class="s-step-circle"> 2 </div>
+        <div class="s-step-text"> Your Account</div>
+      </div>
+      <div class="s-step-line"> </div>
+      <div class="s-step s-step-last s-step-pending">
+        <div class="s-step-circle"> 3 </div>
+        <div class="s-step-text"> Verify </div>
+      </div>
+  </div>
+  -->
+  <form class="s-main-content-box" (ngSubmit)="submitSignUpForm()" #f="ngForm" novalidate>
+
+    <!-- PAGE1 -->
+    <div *ngIf="wizSteps[0].status=='active'" class="s-signup-pg1">
+        <h2> {{invitedByCompanyName}} </h2>
+        <div *ngIf="acceptInvite==false">
+          <p>would like to grant you access to their account. If you have questions you may reach them at {{invitedByCompanyPhone}}. </p>
+          <p>Please fill the company contact information below to begin the process.</p>
+        </div>
+
+        <div *ngIf="acceptInvite==true">
+          <p>has invited you to create an account. If you have questions you may reach them at {{invitedByCompanyPhone}}.</p>
+          <p>Please fill the company contact information below to begin the process.</p>
+        </div>
+
+        <div class="s-signup-inputs">
+          <ng-container *ngIf="acceptInvite==false">
+            <div class="s-hbox-align-right s-child-items-left-m-16">
+              <button type="button" md-button (click)="onDeclineAccess()">DECLINE</button>
+              <button type="button" md-raised-button color="primary" (click)="onAcceptAccess()">ACCEPT ACCESS</button>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="acceptInvite">
+            <md-input placeholder="Company Name" name="companyName" [(ngModel)]="frmSignUp.companyName" #companyName="ngModel" required>
+              <md-hint *ngIf="f.submitted && !companyName.valid" class="s-err-msg" align="start">Company name is required</md-hint>
+            </md-input>
+
+            <md-input placeholder="Phone number" name="phone" [(ngModel)]="frmSignUp.phone" #phone="ngModel" required>
+              <md-hint *ngIf="f.submitted && !phone.valid" class="s-err-msg" align="start">Phone number is required</md-hint>
+            </md-input>
+
+            <md-input placeholder="Address" name="address" [(ngModel)]="frmSignUp.address" #address="ngModel" required>
+              <md-hint *ngIf="f.submitted && !address.valid" class="s-err-msg" align="start">Address number is required</md-hint>
+            </md-input>
+
+            <md-input placeholder="Address Line 2" name="addressLine2" [(ngModel)]="frmSignUp.addressLine2" #addressLine2="ngModel"></md-input>
+
+            <md-input placeholder="Country" name="country" [(ngModel)]="frmSignUp.country" #country="ngModel" required>
+              <md-hint *ngIf="f.submitted && !country.valid" class="s-err-msg" align="start">Country is required</md-hint>
+            </md-input>
+
+            <md-input placeholder="Postal code" name="postalCode" [(ngModel)]="frmSignUp.postalCode" #postalCode="ngModel" required>
+              <md-hint *ngIf="f.submitted && !postalCode.valid" class="s-err-msg" align="start">Postal code number is required</md-hint>
+            </md-input>
+            <div class="s-hbox-align-right">
+              <button type="button" md-raised-button color="primary" (click)="gotoPage2()">CONTINUE</button>
+            </div>
+          </ng-container>
+        </div>
+    </div>
+
+    <!--PAGE2 -->
+    <div *ngIf="wizSteps[1].status=='active'" class="s-signup-pg2">
+
+      <div class="s-signup-inputs">
+        <md-input placeholder="First Name" name="firstName" [(ngModel)]="frmSignUp.firstName" #firstName="ngModel" required>
+          <md-hint *ngIf="f.submitted && !firstName.valid" class="s-err-msg" align="start">First name is required</md-hint>
+        </md-input>
+        <md-input placeholder="Last number" name="lastName" [(ngModel)]="frmSignUp.lastName" #lastName="ngModel" required>
+          <md-hint *ngIf="f.submitted && !lastName.valid" class="s-err-msg" align="start">Last name is required</md-hint>
+        </md-input>
+
+        <md-input placeholder="Title" name="title" [(ngModel)]="frmSignUp.title" #title="ngModel"></md-input>
+
+        <div class="s-form-sub-section">Login Information</div>
+        <md-input placeholder="Email" name="email" [(ngModel)]="frmSignUp.email" #email="ngModel" required>
+          <md-hint *ngIf="f.submitted && !email.valid" class="s-err-msg" align="start">Email is required</md-hint>
+        </md-input>
+
+
+        <md-input placeholder="Password" name="password" [(ngModel)]="frmSignUp.password" #password="ngModel" required>
+          <md-hint align="start">AT least 8 charecters, and no more than 30</md-hint>
+          <md-hint *ngIf="f.submitted && !password.valid" class="s-err-msg" align="start">Password is required</md-hint>
+        </md-input>
+
+        <div class="s-form-sub-section">Secret question, for password recovery</div>
+        <md-input placeholder="Your question" name="secretQuestion" [(ngModel)]="frmSignUp.secretQuestion" #secretQuestion="ngModel" required>
+          <md-hint *ngIf="f.submitted && !secretQuestion.valid" class="s-err-msg" align="start">Secret question is required</md-hint>
+        </md-input>
+
+        <md-input placeholder="Your answer" name="secretAnswer" [(ngModel)]="frmSignUp.secretAnswer" #secretAnswer="ngModel" required>
+          <md-hint *ngIf="f.submitted && !secretAnswer.valid" class="s-err-msg" align="start">Secret answer is required</md-hint>
+        </md-input>
+
+        <div class="side-by-side">
+          <label class="s-slider-label">I'm interested in beta testing new products</label>
+          <md-slide-toggle name="enableBetaTesting" [(ngModel)]="frmSignUp.enableBetaTesting"></md-slide-toggle>
+        </div>
+        <div class="side-by-side">
+          <label class="s-slider-label">Email me security renewal notice</label>
+          <md-slide-toggle name="enableRenewal" [(ngModel)]="frmSignUp.enableRenewal" ></md-slide-toggle>
+        </div>
+
+        <p>By clicking continue, you acknowledge and agree that you have read and accepted the <span style="">End User Product Agreementand</span> the conditions for use</p>
+
+        <div class="s-hbox-align-right s-child-items-left-m-16">
+          <button type="button" md-button (click)="gotoPage1()">BACK</button>
+          <button type="button" md-raised-button color="primary" (click)="gotoPage3()">CONTINUE</button>
+        </div>
+
+      </div>
+
+    </div>
+  </form>
+
+  <!--PAGE3 -->
+  <div *ngIf="wizSteps[2].status=='active'" class="s-signup-pg3">
+    <div class="s-main-content-box s-signup-inputs">
+      <!-- Before Email Verification -->
+      <ng-container *ngIf="emailVerified==false">
+        <h2>Check your email </h2>
+        <p>An email has been sent to <span style="font-weight:bold">{{frmSignUp.email}}</span>. Please check the verification link, or paste the verification code below.</p>
+        <p>If you did not receive a verification email, please contact support</p>
+
+        <md-input placeholder="Verification code" name="verificationCode" [(ngModel)]="frmSignUp.verificationCode" #verificationCode="ngModel" required>
+          <md-hint *ngIf="f.submitted && !verificationCode.valid" class="s-err-msg" align="start">Verification code is required</md-hint>
+        </md-input>
+
+        <div class="s-hbox-align-right s-child-items-left-m-16">
+          <button type="button" md-button (click)="gotoPage2()">BACK</button>
+          <button type="button" md-raised-button color="primary" (click)="finish()">DONE</button>
+        </div>
+      </ng-container>
+
+      <!-- After Email Verification -->
+      <ng-container *ngIf="emailVerified==true">
+        <h2 class="s-hbox-align-center">Thank you </h2>
+        <p class="s-hbox-align-center">Your email is verified. You may now log into your account.</p>
+        <div class="s-hbox-align-center">
+          <button type="button" md-raised-button  (click)="gotoLogin()">LOG IN NOW</button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <s-app-footer style="z-index:1"></s-app-footer>
+
+</div>

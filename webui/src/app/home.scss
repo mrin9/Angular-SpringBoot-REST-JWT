@@ -1,0 +1,21 @@
+@import '../assets/scss/var/var';
+
+.s-home-pg {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  //min-height: 100vh;
+  background-color: $s-c-soft-white;
+  min-height: calc(100vh - 64px);  /* this leaves space for the haader or sticky footer */
+}
+
+
+.s-home-pg-logo{
+  width : 170px;
+  padding:15px 30px 0 10px;
+}
+
+#s-main-toolbar{
+  background-color: white;
+}
