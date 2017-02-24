@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/mrin9/Angular2_SpringBoot.svg?branch=master)](https://travis-ci.org/mrin9/Angular2_SpringBoot)
+[![Github All Releases](https://img.shields.io/github/downloads/atom/atom/total.svg?style=plastic)]()
 
 ## Angular 2 Frontent with SpringBoot (Java) Backend
 Application to demonstrate various parts of a service oriented RESTfull application. 
