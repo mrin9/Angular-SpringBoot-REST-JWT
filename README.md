@@ -72,19 +72,52 @@ ng build -prod --aot=false
 
 ### Install Backend (SpringBoot Java)
 
-#### Enabeling/Disabling spring security ####
-to enable Spring Token security the setting 
+
+#### In Memory DB (H2) ####
+I have included an in-memory database for the application. The schema and sample data for the database is created everytime the application starts, and gets destroyed after the app stops, so the schanges made to to the database are persistent only as long as the app is running
+<br/>
+Creation of database schema and data .are done using sql scripts that Springs runs automatically. 
+To modify the database schema or the data you can modify [schema.sql](./src/main/resources/schema.sql) and [data.sql](./src/main/resources/data.sql) which can be found at `/src/main/resources`
+
+
+#### Spring security ####
+Spring security is **disabled** by default, to enable it you must uncomment [this line](/src/main/java/com/config/SecurityConfig.java#L15) in `src/main/java/com/config/SecurityConfig.java`
+once security is enabled, none of the REST API will be accessesble directly.
+
+to test security access the `http://localhost:9119/version` API and you should get a forbidden/Access denied error. 
+In order to access these secured API you must first obtain a token. Tokens can be obtain by passing a valid userid and password
+
+userid and password are stored in H2 database. To add/remove users, modify the [data.sql](./src/main/resources/data.sql#L7)
+couple of valid users and their passwords are `demo\demo` and `admin\admin`
+<br/>
+
+To get a token call `POST /session` API with a valid userid and password.
+for example you may you can use the folliwing curl command to get a token 
+```
+curl -X POST --header 'Content-Type: application/json' -d '{ "username":"demo", "password":"demo" }' 'http://localhost:9119/session'
+```
+the above curl command will return you a token, which should be in the format of `xxx.xxx.xxx`. This is a JSON web token format. 
+You can decode and validate this token at [jwt.io wesite](https://jwt.io/). Just paste the token there and decode the information.
+to validate the token you should provide the secret key which is `mrin` that i am using in this app.
+<br/>
+after receiving this token you must provide the token in the request-header of every API request. For instance try the `GET /version` api using the below 
+curl command (replace xxx.xxx.xxx with the token that you received in above command) and you should be able to access the API.
+```
+curl -X GET --header 'Accept: application/json' --header 'Authorization: xxx.xxx.xxx' 'http://localhost:9119/version'
+``` 
+
+** As of this writing the Angular Frontend is adapted to make it work with the security. If you enable the security you must update the frontend to store and send the security token with evry API request **
+
 
 #### Install ####
 ```bash
-# Maven Build : Navigate to the root folder where pom.xml is present 
-mvn clean install
-
-#OR
-
 # Gradle Build : Navigate to the root folder where build.gradle is present 
 gradle build
 
+#OR
+
+# Maven Build : Navigate to the root folder where pom.xml is present 
+mvn clean install
 ```
 
 ### Start the API and WebUI server ###
@@ -92,11 +125,11 @@ gradle build
 # Start the server (9119)
 # port and other configurations for API servere is in [./src/main/resources/application.properties](/src/main/resources/application.properties) file
 
-# If you build with maven jar location will be 
-java -jar ./target/app-1.0.0.jar
-
 # If you build with gradle jar location will be 
 java -jar ./build/libs/app-1.0.0.jar
+
+# If you build with maven jar location will be 
+java -jar ./target/app-1.0.0.jar
 ```
 
 ### Accessing Application
