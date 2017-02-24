@@ -21,7 +21,7 @@ Server Build Tools| Maven(Java) or Gradle
 PROJECT_FOLDER
 │  README.md
 │  pom.xml           
-│
+│  build.gradle
 └──[src]      
 │  └──[main]      
 │     └──[java]      
