@@ -62,7 +62,7 @@ To modify the database schema or the data you can modify [schema.sql](./src/main
 
 
 ## Spring security
-Security is **disabled** by default, to enable, you must uncomment [this line](./src/main/java/com/config/SecurityConfig.java#L15) in `src/main/java/com/config/SecurityConfig.java`<br/>
+Security is **disabled** by default, to enable, you must uncomment [this line](./src/main/java/com/app/config/SecurityConfig.java#L15) in `src/main/java/com/config/SecurityConfig.java`<br/>
 Once security is enabled, none of the REST API will be accessesble directly.
 
 to test security access `http://localhost:9119/version` API and you should get a forbidden/Access denied error. 
