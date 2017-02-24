@@ -99,7 +99,6 @@ ng build -prod --aot=false
 ```
 
 ### Install Backend (SpringBoot Java)
-#### Install ####
 ```bash
 # Gradle Build : Navigate to the root folder where build.gradle is present 
 gradle build
