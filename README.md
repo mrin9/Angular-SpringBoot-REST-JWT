@@ -45,47 +45,28 @@ PROJECT_FOLDER
    └──[dist]             #frontend build files, auto-created after running angular build: ng -build
 ```
 
-## Install Instruction
-
-### Prerequisites
+## Prerequisites
 Ensure you have this installed before proceeding further
-- Java 8       
-- Maven 3.3.9 or Gradle 3.3
-- Node 7.2.1,  
-- npm 3.9.5,   
+- Java 8
+- Maven 3.3.9+ or Gradle 3.3+
+- Node 6.0 or above,  
+- npm 4 or above,   
 - Angular-cli 
 
 
-## App Installation
-- Clone the repo in a folder
-- You must follow the installation sequence 
-    1. First Install Frontend 
-    2. Then Install Backend  
-
-#### To Install Frontend
-```bash
-# Navigate to PROJECT_FOLDER/webui (should cntain package.json )
-npm install
-# build the project (this will put the files under dist folder)
-ng build -prod --aot=false
-```
-
-### Install Backend (SpringBoot Java)
-
-
-#### In Memory DB (H2) ####
-I have included an in-memory database for the application. The schema and sample data for the database is created everytime the application starts, and gets destroyed after the app stops, so the schanges made to to the database are persistent only as long as the app is running
+## In Memory DB (H2)
+I have included an in-memory database for the application. Database schema and sample data for the app is created everytime the app starts, and gets destroyed after the app stops, so the changes made to to the database are persistent only as long as the app is running
 <br/>
-Creation of database schema and data .are done using sql scripts that Springs runs automatically. 
+Creation of database schema and data are done using sql scripts that Springs runs automatically. 
 To modify the database schema or the data you can modify [schema.sql](./src/main/resources/schema.sql) and [data.sql](./src/main/resources/data.sql) which can be found at `/src/main/resources`
 
 
-#### Spring security ####
-Spring security is **disabled** by default, to enable it you must uncomment [this line](/src/main/java/com/config/SecurityConfig.java#L15) in `src/main/java/com/config/SecurityConfig.java`
-once security is enabled, none of the REST API will be accessesble directly.
+## Spring security
+Security is **disabled** by default, to enable, you must uncomment [this line](./src/main/java/com/config/SecurityConfig.java#L15) in `src/main/java/com/config/SecurityConfig.java`<br/>
+Once security is enabled, none of the REST API will be accessesble directly.
 
-to test security access the `http://localhost:9119/version` API and you should get a forbidden/Access denied error. 
-In order to access these secured API you must first obtain a token. Tokens can be obtain by passing a valid userid and password
+to test security access `http://localhost:9119/version` API and you should get a forbidden/Access denied error. 
+In order to access these secured API you must first obtain a token. Tokens can be obtained by passing a valid userid/password
 
 userid and password are stored in H2 database. To add/remove users, modify the [data.sql](./src/main/resources/data.sql#L7)
 couple of valid users and their passwords are `demo\demo` and `admin\admin`
@@ -106,9 +87,18 @@ curl command (replace xxx.xxx.xxx with the token that you received in above comm
 curl -X GET --header 'Accept: application/json' --header 'Authorization: xxx.xxx.xxx' 'http://localhost:9119/version'
 ``` 
 
-** As of this writing the Angular Frontend is adapted to make it work with the security. If you enable the security you must update the frontend to store and send the security token with evry API request **
+**As of this writing the Angular Frontend is adapted to make it work with the security. If you enable the security you must update the frontend to store and send the security token with evry API request**
 
 
+### Install Frontend
+```bash
+# Navigate to PROJECT_FOLDER/webui (should cntain package.json )
+npm install
+# build the project (this will put the files under dist folder)
+ng build -prod --aot=false
+```
+
+### Install Backend (SpringBoot Java)
 #### Install ####
 ```bash
 # Gradle Build : Navigate to the root folder where build.gradle is present 
@@ -120,7 +110,7 @@ gradle build
 mvn clean install
 ```
 
-### Start the API and WebUI server ###
+### Start the API and WebUI server
 ```bash
 # Start the server (9119)
 # port and other configurations for API servere is in [./src/main/resources/application.properties](/src/main/resources/application.properties) file
