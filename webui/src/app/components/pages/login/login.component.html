@@ -2,7 +2,6 @@
     <form class="s-login-pg-form" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
         <s-logo class="s-login-pg-logo"></s-logo>
         <div class="s-login-pg-form-inputs">
-          <label> Please login to access the page you requested </label>
           <br/>
           <md-input-container>
             <input mdInput placeholder="Username (demo)" name="username" [(ngModel)]="model.username" #username="ngModel" required/>
