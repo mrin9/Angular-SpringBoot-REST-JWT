@@ -1,3 +1,5 @@
+
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule }    from '@angular/platform-browser';
 import { NgModule }         from '@angular/core';
 import { HttpModule }       from '@angular/http';
@@ -46,12 +48,13 @@ import { PolicyService   } from './api/policy.service';
 @NgModule({
 
   imports: [
+    AppRoutingModule,
     BrowserModule,
+    //BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
     HttpModule,
-    AppRoutingModule,
 
     // Thirdparty Module
     NgxDatatableModule,

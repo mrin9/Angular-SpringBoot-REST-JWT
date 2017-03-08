@@ -87,7 +87,7 @@ curl command (replace xxx.xxx.xxx with the token that you received in above comm
 curl -X GET --header 'Accept: application/json' --header 'Authorization: xxx.xxx.xxx' 'http://localhost:9119/version'
 ``` 
 
-**As of this writing the Angular Frontend is adapted to make it work with the security. If you enable the security you must update the frontend to store and send the security token with evry API request**
+**As of this writing the Angular Frontend is adapted to make it work WITHOUT the security. If you enable the security you must update the frontend to store and send the security token with evry API request**
 
 
 ### Install Frontend

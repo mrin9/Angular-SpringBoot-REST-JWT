@@ -1,7 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "version": "1.0.0-beta.24",
     "name": "SonicWALL WebUI"
   },
   "apps": [
@@ -14,10 +13,8 @@
       ],
       "index": "index.html",
       "main": "main.ts",
-      "test": "test.ts",
       "tsconfig": "tsconfig.json",
       "prefix": "app",
-      "mobile": false,
       "styles": [
         "styles.scss",
          "../node_modules/clarity-icons/clarity-icons.min.css",
@@ -28,8 +25,8 @@
         "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
         "../node_modules/clarity-icons/clarity-icons.min.js"
       ],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
@@ -39,26 +36,9 @@
     {
       "files": "src/**/*.ts",
       "project": "src/tsconfig.json"
-    },
-    {
-      "files": "e2e/**/*.ts",
-      "project": "e2e/tsconfig.json"
     }
   ],
   "defaults": {
-    "styleExt": "scss",
-    "prefixInterfaces": false,
-    "inline": {
-      "style": false,
-      "template": false
-    },
-    "spec": {
-      "class": false,
-      "component": true,
-      "directive": true,
-      "module": false,
-      "pipe": true,
-      "service": true
-    }
+    "styleExt": "scss"
   }
 }
