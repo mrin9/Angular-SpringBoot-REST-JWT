@@ -44,7 +44,7 @@ export class HomeComponent   {
   toolbarNavItems:ItemDescrModel[] = [
     { itemId: 'dashboard' , itemDescr: 'Dashboard' },
     { itemId: 'policy'    , itemDescr: 'Policy'    },
-    { itemId: 'incidents' , itemDescr: 'Incidents' },
+    { itemId: 'incidents' , itemDescr: 'Incident' },
     { itemId: 'settings'  , itemDescr: 'Settings'  }
   ];
 
