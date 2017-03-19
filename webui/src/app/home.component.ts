@@ -38,13 +38,12 @@ export class HomeComponent   {
     if (objUser !== undefined && objUser.firstName && objUser.lastName){
         this.userName = objUser.firstName + " " + objUser.lastName;
     }
-
   }
 
   toolbarNavItems:ItemDescrModel[] = [
     { itemId: 'dashboard' , itemDescr: 'Dashboard' },
     { itemId: 'policy'    , itemDescr: 'Policy'    },
-    { itemId: 'incidents' , itemDescr: 'Incident' },
+    { itemId: 'incidents' , itemDescr: 'Incidents' },
     { itemId: 'settings'  , itemDescr: 'Settings'  }
   ];
 
