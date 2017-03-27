@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
 	selector: 's-incidents-pg',
 	templateUrl: './incidents.component.html',
-  styleUrls: [ './incidents.scss'],
+    styleUrls: [ './incidents.scss'],
 })
 
 export class IncidentsComponent implements OnInit {
