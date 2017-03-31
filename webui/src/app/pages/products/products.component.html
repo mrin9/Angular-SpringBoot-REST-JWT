@@ -1,0 +1,21 @@
+<div class="pad-16">
+
+    <ngx-datatable
+        style='width:1000px;'
+        [rows]="rows"
+        [columns]="columns"
+        [headerHeight]="45"
+        [rowHeight]="'auto'"
+        [columnMode]="'standard'"
+        [scrollbarV]="false"
+    >
+    </ngx-datatable>
+</div>
+<ng-template #productDiscontinuedTpl let-row="row" let-value="value">
+   <div class="toggle-switch">
+        <input type="checkbox" [attr.checked]="value==1?true:null" checked [id]="row.productCode"/>
+        <label [for]="row.productCode"></label>
+   </div>
+</ng-template>
+
+

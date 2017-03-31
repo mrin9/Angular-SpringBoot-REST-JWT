@@ -1,22 +1,54 @@
-<md-toolbar id="s-main-toolbar" >
-  <s-logo class="s-home-pg-logo"></s-logo>
-  <!-- img class="s-home-pg-logo" src="/assets/images/swlogo.png" alt="Sonicwall Logo" / -->
-  <s-hnav #appNav style="height:100%;" [navItems]="toolbarNavItems" [selected]="selectedNavItem"  (selectionChange)="navbarSelectionChange($event);" ></s-hnav>
+<div class="no-margin">  <!-- class="main-container" will create fixed height container -->
 
-  <span style="flex:1"></span>
+    <!--Alert -->
+    <div *ngIf="showAppAlert" class="alert alert-app-level ">
+        <button type="button" class="close" aria-label="Close" (click)="closeAppAlert()">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+        <div class="alert-item">
+            <div class="alert-text">
+                Alert Type: Info
+            </div>
+            <div class="alert-actions">
+                <button class="btn alert-action">Action</button>
+            </div>
+        </div>
+    </div>
 
-  <s-pill [size]="'medium'" [text]="Test"   [iconAlign]="'left'" [color]="'#63666A'" [hideText]="true"  [spread]="false" [rounded]="'true'" [iconCls]="'fa fa-question fa-lg'"></s-pill>
-  <s-pill [size]="'medium'" [text]="Test"   [iconAlign]="'left'" [color]="'#63666A'" [hideText]="true"  [spread]="false" [rounded]="'true'" [iconCls]="'fa fa-bell fa-lg'" (click)="onAlertClick($event)"  md-tooltip="Alerts" tooltip-position="below" ></s-pill>
-  <s-pill [size]="'medium'" [text]="Test"   [iconAlign]="'left'" [color]="'#63666A'" [hideText]="true"  [spread]="false" [rounded]="'true'" [iconCls]="'fa fa-power-off fa-lg'" (click)="onLogout($event)" md-tooltip="Logout" tooltip-position="below"> </s-pill>
-  <s-pill [size]="'medium'" [text]="userName" [iconAlign]="'right'" [color]="'#63666A'" [hideText]="false" [spread]="false" [rounded]="'true'" [iconCls]="'fa fa-user fa-lg'"></s-pill>
-</md-toolbar>
+    <!-- Main App Header -->
+    <header class="header header-2">
+        <div class="branding">
+            <div style="width:40px;margin-right:10px;"><s-logo></s-logo></div>
+            <!-- clr-icon shape="target" class="is-solid is-inverse"></clr-icon -->
+            <span class="title">SprinGular</span>
+        </div>
+        <div class="header-nav">
+            <a *ngFor="let header of appHeaderItems let idx = index" class="nav-link" [routerLink]="header.href" routerLinkActive="active" ><span class="nav-text">{{ header.label }}</span></a>
+        </div>
+        <div class="header-actions">
+            <clr-dropdown class="dropdown bottom-right">
+                <button class="nav-icon" clrDropdownToggle>
+                    <clr-icon shape="user"></clr-icon>
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" clrDropdownItem>About</a>
+                    <a href="#" clrDropdownItem>Preferences</a>
+                    <a [routerLink]="'/logout'" clrDropdownItem>Log out</a>
+                </div>
+        </clr-dropdown>
 
-<md-sidenav-container class="s-home-pg">
-  <router-outlet></router-outlet>
-  <md-sidenav #alertSideNav align="end">
-    <md-toolbar [color]="primary" >
-      <span>Application Alerts</span>
-    </md-toolbar>
-    <button md-button (click)="alertSideNav.close()">Close</button>
-  </md-sidenav>
-</md-sidenav-container>
+
+
+        </div>
+    </header>
+    <!-- Sub Nav Item for Header Items -->
+    <nav *ngIf ="appHeaderItems[selectedHeaderItemIndex].subNav && appHeaderItems[selectedHeaderItemIndex].subNav.length > 0 " class="subnav" >
+        <ul class="nav">
+            <li *ngFor="let subNavItem of appHeaderItems[selectedHeaderItemIndex].subNav let idx=index" class="nav-item">
+                <a class="nav-link" [routerLink]="subNavItem.href" routerLinkActive="active" >{{ subNavItem.label }}</a>
+            </li>
+        </ul>
+    </nav>
+    <router-outlet></router-outlet>
+</div>

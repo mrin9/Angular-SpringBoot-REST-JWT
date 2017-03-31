@@ -1,0 +1,47 @@
+@import '../../../assets/scss/var';
+:host {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.s-login-pg{
+    width:400px;
+    display:flex;
+    padding:0;
+    margin:48px 16px 16px 16px;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.15);
+    .s-login-pg-head{
+        width:100%;
+        height:220px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #998;
+        padding:16px;
+        color:white;
+    }
+    .s-login-pg-form{
+        width:100%;
+        height:200px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        margin:24px 16px;
+        input{
+            margin: 16px;
+        }
+    }
+    .s-login-pg-foot{
+        width:100%;
+        min-height:40px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

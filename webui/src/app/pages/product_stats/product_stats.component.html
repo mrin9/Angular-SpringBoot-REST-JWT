@@ -1,0 +1,19 @@
+<div class="s-product-dash-pg">
+
+    <div class="chart-box">
+        <h4> Products By Quantity Ordered</h4>
+        <ngx-charts-bar-vertical
+            [view]="[990, 270]"
+            [barPadding]="1"
+            [scheme]="barColorScheme"
+            [results]="productByQuantityData"
+            [roundDomains]="true"
+            [showGridLines]="true"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="false"
+        >
+        </ngx-charts-bar-vertical>
+    </div>
+
+</div>

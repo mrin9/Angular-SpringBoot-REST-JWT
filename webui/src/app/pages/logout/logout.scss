@@ -1,0 +1,7 @@
+@import '../../../assets/scss/var';
+:host {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: $s-bg-gray;
+}

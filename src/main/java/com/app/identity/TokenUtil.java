@@ -7,7 +7,8 @@ import javax.servlet.http.*;
 import java.util.*;
 import java.io.IOException;
 
-import com.app.model.security.UserView;
+import com.app.model.user.Role;
+import com.app.model.user.User;
 
 @Service
 public class TokenUtil {
@@ -39,10 +40,11 @@ public class TokenUtil {
             .parseClaimsJws(token)
             .getBody();
 
-        UserView user = new UserView();
+        User user = new User();
         user.setUserId( (String)claims.get("userId"));
-        user.setCustomerId((Integer)claims.get("customerId"));
-        user.setRole((String)claims.get("role"));
+        //user.setCustomerId((Integer)claims.get("customerId"));
+        //user.setRole((String)claims.get("role"));
+        user.setRole(Role.valueOf((String)claims.get("role")));
         return new TokenUser(user);
     }
 
@@ -50,13 +52,12 @@ public class TokenUtil {
       return createTokenForUser(tokenUser.getUser());
     }
 
-    public String createTokenForUser(UserView user) {
+    public String createTokenForUser(User user) {
       return Jwts.builder()
         .setExpiration(new Date(System.currentTimeMillis() + VALIDITY_TIME_MS))
         .setSubject(user.getFullName())
         .claim("userId", user.getUserId())
-        .claim("role", user.getRole())
-        .claim("customerId", user.getCustomerId())
+        .claim("role", user.getRole().toString())
         .signWith(SignatureAlgorithm.HS256, secret)
         .compact();
     }

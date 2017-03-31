@@ -1,12 +1,14 @@
 [![Build Status](https://travis-ci.org/mrin9/Angular2_SpringBoot.svg?branch=master)](https://travis-ci.org/mrin9/Angular2_SpringBoot)
 
+#### Those who forked or cloned the project, I re-wrote the whole project this, time with easy to understand order-processing business model, Removed dead code, and refactored the project to easy to understand structure. 
+
 ## Angular 2 Frontent with SpringBoot (Java) Backend
 Application to demonstrate various parts of a service oriented RESTfull application. 
 
 ### Technology Stack
 Component         | Technology
 ---               | ---
-Frontend          | [Angular 2](https://github.com/angular/angular)
+Frontend          | [Angular 4+](https://github.com/angular/angular)
 Backend (REST)    | [SpringBoot](https://projects.spring.io/spring-boot) (Java)
 Security          | Token Based (Spring Security and [JWT](https://github.com/auth0/java-jwt) )
 REST Documentation| [Swagger UI / Springfox](https://github.com/springfox/springfox) and [ReDoc](https://github.com/Rebilly/ReDoc)
@@ -53,6 +55,31 @@ Ensure you have this installed before proceeding further
 - npm 4 or above,   
 - Angular-cli 
 
+## About
+This is an RESTfull implementation of an order processing app based on Northwind database schema from Microsoft.
+The goal of the project is to 
+- Highlight techniques of making and securing a REST full app using [SpringBoot](https://projects.spring.io/spring-boot)
+- How to consume an RESTfull service and make an HTML5 based Single Page App using [Angular 4+](https://github.com/angular/angular)
+
+### Features of the Project
+* Backend
+  * Token Based Security (using Spring security)
+  * API documentation and Live Try-out links with Swagger 
+  * In Memory DB with H2 
+  * Using JPA and JDBC template to talk to relational database
+  * How to request and respond for paginated data 
+
+* Frontend
+  * Organizing Components, Services, Directives, Pages etc in an Angular App
+  * How to chain RxJS Observables (by making sequntial AJAX request- its different that how you do with promises)
+  * Techniques to Lazy load Data (Infinite Scroll)
+  * Techniques to load large data set in a data-table but still keeping DOM footprint less
+  * Routing and guarding pages that needs authentication
+  * Basic visulaization
+
+* Build
+  * How to build all in one app that includes (database, sample data, RESTfull API, Auto generated API Docs, frontend and security)
+  * Portable app, Ideal for dockers, cloud hosting.
 
 ## In Memory DB (H2)
 I have included an in-memory database for the application. Database schema and sample data for the app is created everytime the app starts, and gets destroyed after the app stops, so the changes made to to the database are persistent only as long as the app is running
@@ -60,15 +87,14 @@ I have included an in-memory database for the application. Database schema and s
 Creation of database schema and data are done using sql scripts that Springs runs automatically. 
 To modify the database schema or the data you can modify [schema.sql](./src/main/resources/schema.sql) and [data.sql](./src/main/resources/data.sql) which can be found at `/src/main/resources`
 
-
 ## Spring security
-Security is **disabled** by default, to enable, you must uncomment [this line](./src/main/java/com/app/config/SecurityConfig.java#L15) in `src/main/java/com/config/SecurityConfig.java`<br/>
-Once security is enabled, none of the REST API will be accessesble directly.
+Security is **enabled** by default, to disable, you must comment [this line](./src/main/java/com/app/config/SecurityConfig.java#L15) in `src/main/java/com/config/SecurityConfig.java`<br/>
+When security is enabled, none of the REST API will be accessesble directly.
 
-to test security access `http://localhost:9119/version` API and you should get a forbidden/Access denied error. 
+To test security access `http://localhost:9119/version` API and you should get a forbidden/Access denied error. 
 In order to access these secured API you must first obtain a token. Tokens can be obtained by passing a valid userid/password
 
-userid and password are stored in H2 database. To add/remove users, modify the [data.sql](./src/main/resources/data.sql#L7)
+userid and password are stored in H2 database. To add/remove users, modify the [data.sql](./src/main/resources/data.sql#L3)
 couple of valid users and their passwords are `demo\demo` and `admin\admin`
 <br/>
 
@@ -143,21 +169,30 @@ after you get the authentication token you must provide this in the header for a
 curl -X GET --header 'Accept: application/json' --header 'Authorization: [replace this with token ]' 'http://localhost:9119/version'
 ```
 
-###Screenshots
-####Dashboard
-![Dashboard](/screenshots/Dashboard.png?raw=true)
+### Screenshots
+#### Dashboard - Login
+![Dashboard](/screenshots/login.png?raw=true)
 ---
-####Incident Data Table (Large table with Virtual scrolling )
-![Incident Data Table](/screenshots/Incident.png?raw=true)
+#### Dashboard - Order Stats
+![Dashboard](/screenshots/order_stats.png?raw=true)
 ---
-####Policy Data Table
-![Policy Data Table](/screenshots/Policy.png?raw=true)
+#### Dashboard - Product Stats
+![Dashboard](/screenshots/product_stats.png?raw=true)
 ---
-####Policy Details
-![Policy Details](/screenshots/PolicyRules.png?raw=true)
+#### Orders
+![Dashboard](/screenshots/orders.png?raw=true)
 ---
-####Swagger API Reference
-![Swagger API Reference](/screenshots/API_List.png?raw=true)
+#### Orders Details
+![Dashboard](/screenshots/order_details.png?raw=true)
 ---
-####Database ER Diagram
-![ER DIagram](/screenshots/ER_Model.png?raw=true)
+#### Customers
+![Dashboard](/screenshots/customers.png?raw=true)
+---
+#### API Docs - With Live Tryout
+![Dashboard](/screenshots/api_doc.png?raw=true)
+---
+#### API Docs - For redability
+![Dashboard](/screenshots/api_doc2.png?raw=true)
+---
+#### Database Schema
+![ER Diagram](/screenshots/er_model.png?raw=true)

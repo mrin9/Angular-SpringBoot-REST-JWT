@@ -14,6 +14,7 @@ import org.json.*;
 import lombok.extern.slf4j.Slf4j;
 
 import com.app.identity.*;
+import com.app.model.user.User;
 
 /* This filter maps to /session and tries to validate the username and password */
 @Slf4j
@@ -47,10 +48,19 @@ public class GenerateTokenForUserFilter extends AbstractAuthenticationProcessing
 
     @Override
     protected void successfulAuthentication ( HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication authToken) throws IOException, ServletException {
-        String newToken = this.tokenUtil.createTokenForUser((TokenUser)authToken.getPrincipal());
         SecurityContextHolder.getContext().setAuthentication(authToken);
+        JSONObject jsonResp = new JSONObject();
+        TokenUser tokenUser = (TokenUser)authToken.getPrincipal();
+        String newToken = this.tokenUtil.createTokenForUser(tokenUser);
+
+        jsonResp.put("token",newToken);
+        jsonResp.put("firstName",tokenUser.getUser().getFirstName());
+        jsonResp.put("lastName",tokenUser.getUser().getLastName());
+        jsonResp.put("email",tokenUser.getUser().getEmail());
+        jsonResp.put("role",tokenUser.getRole());
+
         res.setStatus(HttpServletResponse.SC_OK);
-        res.getWriter().write(newToken);
+        res.getWriter().write(jsonResp.toString());
         res.getWriter().flush();
         res.getWriter().close();
 
