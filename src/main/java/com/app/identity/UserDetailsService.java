@@ -10,11 +10,9 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.stereotype.Service;
 
-import com.app.model.security.Role;
-import com.app.model.security.User;
-import com.app.repo.UserRepository;
-import com.app.model.security.UserView;
-import com.app.repo.UserViewRepo;
+import com.app.model.user.Role;
+import com.app.model.user.User;
+import com.app.repo.UserRepo;
 
 import java.util.Optional;
 
@@ -22,13 +20,13 @@ import java.util.Optional;
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 
     @Autowired
-    private UserViewRepo userRepo;
+    private UserRepo userRepo;
     private final AccountStatusUserDetailsChecker detailsChecker = new AccountStatusUserDetailsChecker();
 
     @Override
     public final TokenUser loadUserByUsername(String username) throws UsernameNotFoundException, DisabledException {
 
-        final UserView user = userRepo.findOneByUserId(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        final User user = userRepo.findOneByUserId(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
         TokenUser currentUser;
         if (user.isActive() == true){
             currentUser = new TokenUser(user);

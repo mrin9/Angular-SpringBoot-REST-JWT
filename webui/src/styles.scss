@@ -1,17 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
-
-@import './ng_select.css';
-
-// If you need pre-defined Material themes
-//@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
-
-@import '~@angular/material/core/theming/all-theme';
-// Plus imports for other components in your app.
-
-// Include the base styles for Angular Material core. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-@include mat-core();
+@import './assets/scss/var';
+@import './assets/scss/base';
 
 html {
     /* make sure we use up the whole viewport */
@@ -20,111 +9,12 @@ html {
 }
 body {
     width: 100%;
-    min-height: 100vh; /* this helps with the sticky footer */
+    background-color: $s-bg-gray;
+    //min-height: 100vh; /* this helps with the sticky footer */
 }
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue.
-//$candy-app-primary: mat-palette($mat-indigo);
-//$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
-
-
-
-$mat-sonicwall: (
-  50: #fbe9e7,
-  100: #ffccbc,
-  200: #ffab91,
-  300: #ff8a65,
-  400: #ff7043,
-  500: #ff5722,
-  600: #f4511e,
-  700: #e64a19,
-  800: #d84315,
-  900: #bf360c,
-  A100: #ff9e80,
-  A200: #ff6e40,
-  A400: #ff3d00,
-  A700: #dd2c00,
-  contrast: (
-    50: $black-87-opacity,
-    100: $black-87-opacity,
-    200: $black-87-opacity,
-    300: $black-87-opacity,
-    400: $black-87-opacity,
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
-    A100: $black-87-opacity,
-    A200: $black-87-opacity,
-    A400: white,
-    A700: white,
-  )
-);
-
-$sonicwall-primary: mat-palette($mat-blue);
-$sonicwall-accent:  mat-palette($mat-orange, A200, A100, A400);
-
-
-// The warn palette is optional (defaults to red).
-$sonicwall-warn:    mat-palette($mat-red);
-
-// Create the theme object (a Sass map containing all of the palettes).
-$sonicwall-theme: mat-light-theme($sonicwall-primary, $sonicwall-accent, $sonicwall-warn);
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($sonicwall-theme);
-
-@import './assets/scss/var/var';
-@import './assets/scss/src/base';
 
 //Import classes from swimlane datatable
-
-button{
-  outline:none !important;
-}
-/* RESET some Material Design Properties */
-.mat-input-container {
-  font-family:inherit !important;
-  padding-top:12px;
-}
-.mat-hint{
-  bottom: -.2em !important;
-}
-.mat-input-prefix { font-family:inherit !important; }
-.mat-input-suffix { font-family:inherit !important; }
-.mat-input-inffix { font-family:inherit !important; }
-
-[mat-button], [mat-fab], [mat-icon-button], [mat-mini-fab], [mat-raised-button] {
-  font-family:inherit !important;
-  font-size:12px !important;
-  font-weight:inherit !important;
-}
-
-input[type=text], input[type=password], input[type=number], input[type=email], input[type=url], .select select{
-  border-bottom: inherit !important;
-  height:inherit !important;;
-}
-input[type=text]:focus, input[type=password]:focus, input[type=number]:focus, input[type=email]:focus, input[type=url]:focus, .select select:focus{
-  background:inherit !important;
-}
-
-md-toolbar{ font-family:inherit !important;}
-md-card {font-family:inherit !important;}
-.mat-simple-snackbar-message {font-family:inherit !important;}
-
-.mat-slide-toggle-content{
-  font-family: inherit !important;
-  font-size:inherit !important;
-  font-weight: inherit !important;
-}
-
-
-/*   Styles for Common Component Classes */
 ngx-datatable {
   font-family: Metropolis,Avenir Next,Helvetica Neue,Arial,sans-serif;
   font-size:13px;
@@ -211,48 +101,22 @@ header.legend-title{
   border-radius: 2px;
   padding:2px 5px;
 
-  &.s-badge-Critical{
-      background-color: #ef2e2e;
-      color:$s-c-white;
-  }
-  &.s-badge-Alert{
-      background-color: #ff8e28;
-      color:$s-c-white;
-  }
-  &.s-badge-Warning{
-      font-size:13px;
-      //color:$s-c-warning;
-  }
-  &.s-badge-Info{
-      font-size:13px;
-      //color:$s-c-text;
-  }
-  &.s-badge-New{
-      color:#007CBB;
-      border: 1px solid #007CBB;
-      margin-left:5px;
-  }
-  &.s-badge-Resolved{
-      font-size:13px;
-      //color:$s-c-positive;
-  }
-  &.s-badge-Dismissed{
-      font-size:13px;
-      //color:$s-c-gray-logo;
-  }
-  &.s-badge-Progress{
-      font-size:13px;
-      //color:$s-c-text;
-  }
+  &.s-badge-error,
+  &.s-badge-onhold   { background-color: $s-c-error; color:$s-c-white;}
+  &.s-badge-warning  { background-color: #ff8e28; color:$s-c-text;}
+  &.s-badge-good     { background-color: $s-c-good; color:$s-c-text;}
+  &.s-badge-new      { background-color: $s-c-info; color:$s-c-white;}
 }
 
-.s-severity-box{
-  display:inline-block;
-  width:10px;
-  height:10px;
-  border-radius:2px;
-  &.s-severity-critical{background-color:#ef2e2e}
-  &.s-severity-alert   {background-color:#ff8e28}
-  &.s-severity-warning {background-color:#ffd428}
-  &.s-severity-info    {background-color:#61c673}
+.tile{
+    display:flex;
+    padding:16px;
+    margin:16px;
+    border-radius:2px;
+    &.column { flex-direction: column;}
+    &.center { align-items: center;}
+    &.white {
+        background-color: $s-bg-white;
+        border:1px solid #ccc;
+    }
 }

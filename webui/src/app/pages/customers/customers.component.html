@@ -1,0 +1,23 @@
+<div class="pad-16">
+
+    <h3> Lazy Loading Data </h3>
+    <p style="width:1000px"> This is an example of lazy loading data. There are about 100 customer and
+        the page initially loads 10 customer.
+        When you scroll to bottom it loads another 10, till it loads all the 100 customer
+    </p>
+    <br/>
+    <ngx-datatable
+        style='width:1000px;'
+        [rows]="rows"
+        [columns]="columns"
+        [headerHeight]="45"
+        [rowHeight]="'auto'"
+        [columnMode]="'standard'"
+        [scrollbarV]="false"
+        trackScroll
+        (bottom)="onScroll()"
+    >
+    </ngx-datatable>
+
+    <div *ngIf="isLoading" class="spinner spinner-lg">Loading...</div>
+</div>

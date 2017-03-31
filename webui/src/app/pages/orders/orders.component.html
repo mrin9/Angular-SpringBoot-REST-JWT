@@ -1,0 +1,62 @@
+<div class="pad-16">
+<h3> Large Dataset with - Dynamic DOM</h3>
+<p style="width:1140px"> Here we are loading about 600 rows in one ajax call.
+    However to keep the DOM footprint low we don not create those many DOM elements.
+    As the user scrolls up and down , DOM elements are added and removed based on the data in memory.
+</p>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div style="width:1140px">
+        <div class="s-info-bar">
+            <clr-dropdown [clrMenuPosition]="'right-bottom'">
+                <button class="btn btn-sm btn-primary"clrDropdownToggle>
+                    Filter <clr-icon shape="caret right"></clr-icon>
+                </button>
+                <div class="dropdown-menu">
+                    <label class="dropdown-header">By status</label>
+                    <button clrDropdownItem > On Hold  </button>
+                    <button clrDropdownItem > Shipped  </button>
+                    <button clrDropdownItem > Complete </button>
+                    <button clrDropdownItem > New      </button>
+                    <label class="dropdown-header">By Payment Type</label>
+                    <button clrDropdownItem > Cash  </button>
+                    <button clrDropdownItem > Check </button>
+                    <button clrDropdownItem > Card  </button>
+                </div>
+            </clr-dropdown>
+            <div style="flex:1"></div>
+            <div *ngIf="isLoading" class="spinner spinner-md" style="margin:0 10px;">Loading...</div>
+            <s-legend [legend]="orderByStatusData" ></s-legend>
+        </div>
+        <ngx-datatable
+            style='height:450px; width:100%;'
+            [rows]='rows'
+            [columns]="columns"
+            [columnMode]="'standard'"
+            [headerHeight]="45"
+            [footerHeight]="45"
+            [rowHeight]="36"
+            [scrollbarV]="true"
+        >
+        </ngx-datatable>
+        </div>
+
+
+    </div>
+</div>
+</div>
+
+<ng-template #orderIdTpl let-row="row" let-value="value" let-i="index">
+  <a routerLink="/home/orders/{{value}}" attr.data-itemid="{{value}}">{{value}}</a>
+</ng-template>
+
+
+<ng-template #orderStatusCellTpl let-row="row" let-value="value" let-i="index">
+  <s-badge [text]=value [badgeCls]="'s-badge-'+value.toLowerCase().replace(' ','')"></s-badge>
+</ng-template>
+
+
+
+
+

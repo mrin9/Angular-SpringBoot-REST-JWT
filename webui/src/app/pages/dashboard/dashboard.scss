@@ -1,0 +1,16 @@
+@import '../../../assets/scss/var';
+.s-dashboard-pg {
+  margin: 0px;
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:row;
+  justify-content:center;
+  .chart-box{
+    margin:16px;
+    padding:0 16px;
+    background-color: #fff;
+    border:1px solid #ccc;
+    border-radius: 2px;
+  }
+}
+
