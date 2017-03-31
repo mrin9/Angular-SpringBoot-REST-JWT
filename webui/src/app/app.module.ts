@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxChartsModule }    from '@swimlane/ngx-charts';
 import { ClarityModule }      from 'clarity-angular';
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+//import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 import { AppComponent }       from './app.component';
 
@@ -61,7 +61,7 @@ import { EmployeeService  } from './services/api/employee.service';
     HttpModule,
 
     // Thirdparty Module
-    InfiniteScrollModule,
+    //InfiniteScrollModule,
     NgxDatatableModule,
     NgxChartsModule,
     ClarityModule.forChild()
