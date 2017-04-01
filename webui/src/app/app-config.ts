@@ -28,7 +28,13 @@ export class AppConfig {
         if (this.apiPort===undefined){
             this.apiPort = window.location.port;
         }
-        this.baseApiPath = this.apiProtocol + "//" + this.apiHostName + ":" + this.apiPort +"/";
+        if (this.apiHostName.includes("infomud") || this.apiHostName.includes("heroku")){
+            this.baseApiPath = this.apiProtocol + "//" + this.apiHostName + "/";
+        }
+        else{
+            this.baseApiPath = this.apiProtocol + "//" + this.apiHostName + ":" + this.apiPort +"/";
+        }
+
 
         if (this.locale===undefined){
             this.locale = navigator.language;

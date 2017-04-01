@@ -36,12 +36,10 @@
                     <a href="#" clrDropdownItem>Preferences</a>
                     <a [routerLink]="'/logout'" clrDropdownItem>Log out</a>
                 </div>
-        </clr-dropdown>
-
-
-
+            </clr-dropdown>
         </div>
     </header>
+
     <!-- Sub Nav Item for Header Items -->
     <nav *ngIf ="appHeaderItems[selectedHeaderItemIndex].subNav && appHeaderItems[selectedHeaderItemIndex].subNav.length > 0 " class="subnav" >
         <ul class="nav">
