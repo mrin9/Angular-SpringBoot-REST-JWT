@@ -70,6 +70,14 @@ export class LoginService {
             return localStorage.getItem('currentUser')?true:false;
         }
 
+        getUserName():string{
+            if (localStorage.getItem("currentUser")){
+                let userObj = JSON.parse(localStorage.getItem("currentUser"))
+                return userObj.firstName + " " + userObj.lastName;
+            }
+            return "no-user";
+        }
+
         getStoredToken():string{
             return JSON.parse(localStorage.getItem("currentUser")).token
         }

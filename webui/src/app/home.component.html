@@ -26,17 +26,8 @@
             <a *ngFor="let header of appHeaderItems let idx = index" class="nav-link" [routerLink]="header.href" routerLinkActive="active" ><span class="nav-text">{{ header.label }}</span></a>
         </div>
         <div class="header-actions">
-            <clr-dropdown class="dropdown bottom-right">
-                <button class="nav-icon" clrDropdownToggle>
-                    <clr-icon shape="user"></clr-icon>
-                    <clr-icon shape="caret down"></clr-icon>
-                </button>
-                <div class="dropdown-menu">
-                    <a href="#" clrDropdownItem>About</a>
-                    <a href="#" clrDropdownItem>Preferences</a>
-                    <a [routerLink]="'/logout'" clrDropdownItem>Log out</a>
-                </div>
-            </clr-dropdown>
+            <label style="line-height: 60px;"> {{userName}}</label>
+            <a [routerLink]="'/logout'" class="nav-link nav-text"> <clr-icon shape="power"></clr-icon></a>
         </div>
     </header>
 

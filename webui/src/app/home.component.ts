@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
 import { Router,ActivatedRoute, NavigationEnd } from '@angular/router';
 
-import { LogoComponent  }   from './components/logo/logo.component';
-
+import { LogoComponent  } from './components/logo/logo.component';
+import { LoginService   } from './services/api/login.service';
 
 @Component({
   selector   : 'home-comp',
@@ -30,39 +30,33 @@ export class HomeComponent   {
 
     public selectedHeaderItemIndex:number=0;
     public selectedSubNavItemIndex:number=1;
-
-
     public userName: string="";
 
-  constructor(private router:Router, private activeRoute:ActivatedRoute) {
-    // This block is to retrieve the data from the routes
-    router.events
-      .filter(event => event instanceof NavigationEnd)
-      .map( _ => this.router.routerState.root)
-      .map(route => {
-        while (route.firstChild) route = route.firstChild;;
-        return route;
-      })
-      .flatMap(route => route.data)
-      .subscribe(data => {
-        console.log("Route data: ",data[0]);
-        this.selectedHeaderItemIndex = data[0].selectedHeaderItemIndex;
-        this.selectedSubNavItemIndex = data[0].selectedSubNavItemIndex;
-      });
+    constructor(private router:Router, private activeRoute:ActivatedRoute, private loginService:LoginService) {
+        // This block is to retrieve the data from the routes
+        router.events
+        .filter(event => event instanceof NavigationEnd)
+        .map( _ => this.router.routerState.root)
+        .map(route => {
+            while (route.firstChild) route = route.firstChild;;
+            return route;
+        })
+        .flatMap(route => route.data)
+        .subscribe(data => {
+            console.log("Route data: ",data[0]);
+            this.selectedHeaderItemIndex = data[0].selectedHeaderItemIndex;
+            this.selectedSubNavItemIndex = data[0].selectedSubNavItemIndex;
+        });
+        this.userName = this.loginService.getUserName();
 
-    // This is to put the current user name
-    let objUser:any =  JSON.parse(localStorage.getItem('currentUser'));
-    if (objUser !== undefined && objUser.firstName && objUser.lastName){
-        this.userName = objUser.firstName + " " + objUser.lastName;
     }
-  }
 
-  navbarSelectionChange(val){
-     // console.log(val);
-  }
+    navbarSelectionChange(val){
+        // console.log(val);
+    }
 
-  closeAppAlert(){
-      this.showAppAlert=false;
-  }
+    closeAppAlert(){
+        this.showAppAlert=false;
+    }
 
 }

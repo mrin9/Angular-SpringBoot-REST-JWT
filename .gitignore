@@ -6,7 +6,6 @@ bin/
 .classpath
 
 # WebUI Builds
-dist/
 tmp/
 
 # WebUI dependencies

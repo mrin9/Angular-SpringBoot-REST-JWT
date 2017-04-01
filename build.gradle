@@ -51,7 +51,7 @@ dependencies {
     compile group: 'org.json'             , name: 'json'      , version: '20160810'
     compile group: 'org.projectlombok'    , name: 'lombok'    , version: '1.16.12'
     runtime("com.h2database:h2")
-    runtime("mysql:mysql-connector-java")
+    //runtime("mysql:mysql-connector-java")
 }
 
 

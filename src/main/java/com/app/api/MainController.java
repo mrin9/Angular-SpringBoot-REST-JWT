@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller // Dont use RestController as this method is mapping to a static file not a JSON
 public class MainController {
 
-  @RequestMapping(value="/")
+  @RequestMapping(value={"/"})
 	public String index() {
 		return "index.html";
 	}
