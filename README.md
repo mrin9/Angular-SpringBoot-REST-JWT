@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mrin9/Angular2_SpringBoot.svg?branch=master)](https://travis-ci.org/mrin9/Angular2_SpringBoot)
+[![Build Status](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT.svg?branch=master)](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT)
 
 #### Those who forked or cloned the project, I re-wrote the whole project, this time with easy to understand business model that deals with order-processing, Made the repo slim, removed lot of dead code, and refactored the project in a easy to understand structure. 
 
@@ -170,7 +170,7 @@ curl -X GET --header 'Accept: application/json' --header 'Authorization: [replac
 ```
 
 ### Screenshots
-#### Dashboard - Login
+#### Login
 ![Dashboard](/screenshots/login.png?raw=true)
 ---
 #### Dashboard - Order Stats

@@ -19,14 +19,13 @@
     "@angular/router": "^4.0.1",
     "@swimlane/ngx-charts": "^5.0.0",
     "@swimlane/ngx-datatable": "^7.1.1",
-    "@webcomponents/custom-elements": "^1.0.0-alpha.3",
-    "clarity-angular": "^0.8.13",
-    "clarity-icons": "^0.8.13",
-    "clarity-ui": "^0.8.13",
+    "@webcomponents/custom-elements": "^1.0.0-rc.3",
+    "clarity-angular": "^0.9.0-alpha.2",
+    "clarity-icons": "^0.9.0-alpha.2",
+    "clarity-ui": "^0.9.0-alpha.2",
     "core-js": "^2.4.1",
     "d3": "^4.7.4",
-    "ng-sidebar": "3.4.3",
-    "rxjs": "5.2.0",
+    "rxjs": "5.3.0",
     "ts-helpers": "^1.1.1",
     "zone.js": "0.8.5"
   },
@@ -34,7 +33,7 @@
     "@angular/cli": "^1.0.0",
     "@angular/compiler-cli": "^4.0.1",
     "@types/node": "^7.0.12",
-    "ts-node": "2.1.0",
+    "ts-node": "3.0.2",
     "tslint": "5.0.0",
     "typescript": "~2.2.2"
   }

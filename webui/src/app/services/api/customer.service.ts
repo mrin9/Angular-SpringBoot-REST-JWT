@@ -4,8 +4,6 @@ import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { TranslateService } from './translate.service';
 import { ApiRequestService } from './api_request.service';
 
-
-
 @Injectable()
 export class CustomerService {
 
