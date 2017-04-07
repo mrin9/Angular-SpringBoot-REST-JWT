@@ -4,6 +4,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable,Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { AppConfig } from '../../app-config';
 
 @Injectable()
 export class LoginService {
@@ -11,7 +12,7 @@ export class LoginService {
     public objUser:any;
     public landingPage:string = "/home/dashboard/order";
 
-    constructor(private http: Http,  @Inject('api') private api) {  //refer fo api value in app.module.ts
+    constructor(private http: Http,  private appConfig:AppConfig) {  //refer fo api value in app.module.ts
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser!== undefined && currentUser!== null && currentUser.token !== "INVALID"){
@@ -33,7 +34,7 @@ export class LoginService {
         headers.append('Content-Type', 'application/json');
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
-        this.http.post(this.api + 'session', JSON.stringify({ username: username, password: password }), options)
+        this.http.post(this.appConfig.baseApiPath + 'session', JSON.stringify({ username: username, password: password }), options)
             .map(resp => resp.json())
             .catch((err:Response) => {
                 console.log("Error === >" + err.status  );

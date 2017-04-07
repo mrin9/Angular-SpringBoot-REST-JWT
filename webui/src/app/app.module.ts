@@ -4,33 +4,33 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule }         from '@angular/core';
 import { HttpModule }       from '@angular/http';
 import { RouterModule }     from '@angular/router';
-import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 //Third Party Modules
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxChartsModule }    from '@swimlane/ngx-charts';
 import { ClarityModule }      from 'clarity-angular';
-//import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
-import { AppComponent }       from './app.component';
+//Local App Modules
+import { AppRoutingModule } from './app-routing.module';
 
 // Directives
 import { TrackScrollDirective }      from './directives/track_scroll/track_scroll.directive';
+
 
 // Components
 import { BadgeComponent }     from './components/badge/badge.component';
 import { LegendComponent }    from './components/legend/legend.component';
 import { LogoComponent }      from './components/logo/logo.component';
 
-//Pages
+//Pages  -- Pages too are components, they contain other components
+import { AppComponent }       from './app.component';
 import { HomeComponent         } from './home.component';
 import { LoginComponent        } from './pages/login/login.component';
 import { LogoutComponent       } from './pages/logout/logout.component';
 import { DashboardComponent    } from './pages/dashboard/dashboard.component';
 import { OrderStatsComponent   } from './pages/order_stats/order_stats.component';
 import { ProductStatsComponent } from './pages/product_stats/product_stats.component';
-
 import { ProductsComponent   } from './pages/products/products.component';
 import { CustomersComponent  } from './pages/customers/customers.component';
 import { OrdersComponent     } from './pages/orders/orders.component';
@@ -53,7 +53,6 @@ import { EmployeeService  } from './services/api/employee.service';
 @NgModule({
 
   imports: [
-    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -61,21 +60,27 @@ import { EmployeeService  } from './services/api/employee.service';
     HttpModule,
 
     // Thirdparty Module
-    //InfiniteScrollModule,
     NgxDatatableModule,
     NgxChartsModule,
-    ClarityModule.forChild()
+    ClarityModule.forChild(),
+
+    // Local App Modules
+    AppRoutingModule
+
 
   ],
 
   declarations: [
-    AppComponent,
+    // Components
     BadgeComponent,
     LegendComponent,
+    LogoComponent,
+
+    //Pages -- Pages too are components, they contain other components
+    AppComponent,
     HomeComponent,
     LoginComponent,
     LogoutComponent,
-    LogoComponent,
     DashboardComponent,
     ProductStatsComponent,
     OrderStatsComponent,
@@ -84,6 +89,8 @@ import { EmployeeService  } from './services/api/employee.service';
     CustomersComponent,
     OrdersComponent,
     OrderDetailsComponent,
+
+    //Directives
     TrackScrollDirective
   ],
 
@@ -97,8 +104,6 @@ import { EmployeeService  } from './services/api/employee.service';
     CustomerService,
     EmployeeService,
     AppConfig,
-    //{provide: 'appConfig', useClass: AppConfig },
-    {provide: 'api', useValue:  window.location.protocol +'//' + window.location.hostname + (window.location.port===''?'/':':9119/') }
   ],
 
   bootstrap: [AppComponent]

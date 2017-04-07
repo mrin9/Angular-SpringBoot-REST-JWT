@@ -9,12 +9,10 @@ import { AppConfig } from '../../app-config';
 @Injectable()
 export class ApiRequestService {
 
-
     private headers:Headers;
     private requestOptions:RequestOptions;
 
     constructor(
-        //@Inject('api') private api, //refer fo api value in app.module.ts
         private appConfig:AppConfig,
         private http: Http,
         private loginService:LoginService,

@@ -34,13 +34,8 @@ export class AppConfig {
         else{
             this.baseApiPath = this.apiProtocol + "//" + this.apiHostName + ":" + this.apiPort +"/";
         }
-
-
         if (this.locale===undefined){
             this.locale = navigator.language;
         }
-
-        console.log("basepath: " + this.baseApiPath);
-
     }
 }
