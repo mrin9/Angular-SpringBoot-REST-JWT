@@ -3,6 +3,7 @@ import { Router,ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import { LogoComponent  } from './components/logo/logo.component';
 import { LoginService   } from './services/api/login.service';
+import { UserInfoService} from './services/user-info.service';
 
 @Component({
   selector   : 'home-comp',
@@ -32,7 +33,12 @@ export class HomeComponent   {
     public selectedSubNavItemIndex:number=1;
     public userName: string="";
 
-    constructor(private router:Router, private activeRoute:ActivatedRoute, private loginService:LoginService) {
+    constructor(
+        private router:Router,
+        private activeRoute:ActivatedRoute,
+        private loginService:LoginService,
+        private userInfoService:UserInfoService
+    ) {
         // This block is to retrieve the data from the routes
         router.events
         .filter(event => event instanceof NavigationEnd)
@@ -47,7 +53,7 @@ export class HomeComponent   {
             this.selectedHeaderItemIndex = data[0].selectedHeaderItemIndex;
             this.selectedSubNavItemIndex = data[0].selectedSubNavItemIndex;
         });
-        this.userName = this.loginService.getUserName();
+        this.userName = this.userInfoService.getUserName();
 
     }
 

@@ -1,0 +1,44 @@
+//Fonts
+$s-f-family: Metropolis,Avenir Next,Helvetica Neue,Arial,sans-serif;
+$s-f1-size: 24px;
+$s-f2-size: 20px;
+$s-f3-size: 18px;
+$s-f4-size: 16px;
+$s-f5-size: 14px;
+$s-f6-size: 12px;
+$s-f-body-size: 12px;
+$s-f-tiny-size: 10px;
+$s-f-small-size : 16px;
+$s-f-medium-size: 24px;
+$s-f-large-size : 32px;
+
+//****************** Color Scheme ********************
+
+//Status Colors
+$s-c-error  : #CE1126; //critical
+$s-c-warning: #E3642B;
+$s-c-alert  : #FFCC00;
+$s-c-good   : #6EA204;
+$s-c-info   : #007cbb;
+
+//Text Colors
+$s-c-text         : #333;  // Main Text color used in most places
+$s-c-inverse-text : #eee;  // Text Color used on contrasting backgrounds such as buttons/tabs
+$s-c-disable-text : gray;  // Text Color used for displaying less emphasized text (eg:detail chart axis color)
+$s-c-link-text    : #007cbb;
+
+//Backgrounds
+$s-bg-main       : #ffffff; // Main Body Background Color
+$s-bg-soft-white : whitesmoke;    // Alternate Body Background (Such as Windows, Panels, Dropdowns)
+$s-bg-inverse    : #32404e;
+$s-bg-gray       : rgb(250, 250, 250);
+$s-bg-white      : #fff;
+
+//Borders
+$s-c-bd               : #ccc;
+
+//Named Colors
+$s-c-white : #fff;
+$s-c-gray  : gray;
+$s-c-soft-white : whitesmoke;
+$s-c-primary : #005d84;

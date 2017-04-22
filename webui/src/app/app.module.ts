@@ -40,8 +40,9 @@ import { EmployeesComponent  } from './pages/employees/employees.component';
 
 // Services
 import { AppConfig        } from './app-config';
+import { UserInfoService  } from './services/user-info.service';
 import { AuthGuard        } from './services/auth_guard.service';
-import { ApiRequestService} from './services/api/api_request.service';
+import { ApiRequestService} from './services/api/api-request.service';
 import { TranslateService } from './services/api/translate.service';
 import { LoginService     } from './services/api/login.service';
 import { OrderService     } from './services/api/order.service';
@@ -96,6 +97,7 @@ import { EmployeeService  } from './services/api/employee.service';
 
   providers:[
     AuthGuard,
+    UserInfoService,
     TranslateService,
     ApiRequestService,
     LoginService,

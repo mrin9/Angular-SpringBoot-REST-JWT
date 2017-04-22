@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, Response, Request, RequestOptions, URLSearchParams,RequestMethod } from '@angular/http';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { TranslateService } from './translate.service';
-import { ApiRequestService } from './api_request.service';
+import { ApiRequestService } from './api-request.service';
 
 @Injectable()
 export class CustomerService {

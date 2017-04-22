@@ -17,11 +17,11 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         // reset login status
-        this.loginService.logout();
+        this.loginService.logout(false);
     }
 
     login() {
-        this.loginService.login(this.model.username, this.model.password)
+        this.loginService.getToken(this.model.username, this.model.password)
             .subscribe(resp => {
                     if (resp.user === undefined || resp.user.token === undefined || resp.user.token === "INVALID" ){
                         this.errMsg = 'Username or password is incorrect';
@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
                       this.errMsg = 'Service not found';
                     case 408:
                       this.errMsg = 'Request Timedout';
+                    case 500:
+                      this.errMsg = 'Internal Server Error';
                     default:
                       this.errMsg = 'Server Error';
                   }

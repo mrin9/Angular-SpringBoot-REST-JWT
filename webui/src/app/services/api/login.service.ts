@@ -1,90 +1,78 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { Observable,Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { AppConfig } from '../../app-config';
+import { UserInfoService, LoginInfoInStorage} from '../user-info.service';
+import { ApiRequestService } from './api-request.service';
+
+export interface LoginRequestParam{
+    username:string;
+    password:string;
+}
 
 @Injectable()
 export class LoginService {
-    public token:string;
-    public objUser:any;
-    public landingPage:string = "/home/dashboard/order";
 
-    constructor(private http: Http,  private appConfig:AppConfig) {  //refer fo api value in app.module.ts
-        // set token if saved in local storage
-        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser!== undefined && currentUser!== null && currentUser.token !== "INVALID"){
-          this.token = currentUser.token;
-          this.objUser = currentUser;
+    public landingPage:string = "/home/dashboard/order";
+    constructor(
+        private router:Router,
+        private http: Http,
+        private userInfoService: UserInfoService,
+        private apiRequest: ApiRequestService
+    ) {}
+
+
+    getToken(username:string, password:string): Observable<any> {
+        let me = this;
+
+        let bodyData:LoginRequestParam = {
+            "username": username,
+            "password": password,
         }
+        let loginDataSubject:Subject<any> = new Subject<any>(); // Will use this subject to emit data that we want after ajax login attempt
+        let loginInfoReturn:LoginInfoInStorage; // Object that we want to send back to Login Page
+
+        this.apiRequest.post('session', bodyData)
+            .subscribe(jsonResp => {
+                if (jsonResp !== undefined && jsonResp !== null && jsonResp.operationStatus === "SUCCESS"){
+                    //Create a success object that we want to send back to login page
+                    loginInfoReturn = {
+                        "success"    : true,
+                        "message"    : jsonResp.operationMessage,
+                        "landingPage": this.landingPage,
+                        "user"       : {
+                            "userId"     : jsonResp.item.userId,
+                            "email"      : jsonResp.item.emailAddress,
+                            "displayName": jsonResp.item.firstName + " " + jsonResp.item.lastNameName,
+                            "token"      : jsonResp.item.token,
+                        }
+                    };
+
+                    // store username and jwt token in session storage to keep user logged in between page refreshes
+                    this.userInfoService.storeUserInfo(JSON.stringify(loginInfoReturn.user));
+                }
+                else {
+                    //Create a faliure object that we want to send back to login page
+                    loginInfoReturn = {
+                        "success":false,
+                        "message":jsonResp.msgDesc,
+                        "landingPage":"/login"
+                    };
+                }
+                loginDataSubject.next(loginInfoReturn);
+            });
+
+            return loginDataSubject;
     }
 
-    login(username, password): Observable<any> {
-        /*
-        let headers = new Headers({
-            'Content-Type': 'application/json'
-        });
-        */
-        let loginDataSubject:Subject<any> = new Subject<any>(); // Will use this subject to emit data that we want after ajax login attempt
-        let loginReturnData={} // Object that we want to send back to Login Page
-        let headers = new Headers();
-
-        headers.append('Content-Type', 'application/json');
-        let options = new RequestOptions({ headers: headers }); // Create a request option
-
-        this.http.post(this.appConfig.baseApiPath + 'session', JSON.stringify({ username: username, password: password }), options)
-            .map(resp => resp.json())
-            .catch((err:Response) => {
-                console.log("Error === >" + err.status  );
-                return Observable.throw(err) ;
-            })
-            .subscribe(jsonResp => {
-                if (jsonResp !== undefined && jsonResp !== null && jsonResp.token !== "INVALID"){
-                    this.token   = jsonResp.token;
-                    this.objUser = jsonResp;
-                    // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(jsonResp));
-                }
-
-                //Create a object that we want to send back to login page
-                loginReturnData = {
-                    user : jsonResp,
-                    landingPage:this.landingPage
-                };
-                loginDataSubject.next(loginReturnData);
-
-            });
-            return loginDataSubject;
+    logout(navigatetoLogout=true): void {
+        // clear token remove user from local storage to log user out
+        this.userInfoService.removeUserInfo();
+        if(navigatetoLogout){
+            this.router.navigate(["logout"]);
         }
-
-
-
-        logout(): void {
-            // clear token remove user from local storage to log user out
-            this.token = null;
-            localStorage.removeItem('currentUser');
-        }
-
-        isLoggedIn():boolean{
-            return localStorage.getItem('currentUser')?true:false;
-        }
-
-        getUserName():string{
-            if (localStorage.getItem("currentUser")){
-                let userObj = JSON.parse(localStorage.getItem("currentUser"))
-                return userObj.firstName + " " + userObj.lastName;
-            }
-            return "no-user";
-        }
-
-        getStoredToken():string{
-            return JSON.parse(localStorage.getItem("currentUser")).token
-        }
-
-        appendAuthHeader(headers:Headers){
-            headers.append("Authorization", this.getStoredToken());
-        }
-
+    }
 }

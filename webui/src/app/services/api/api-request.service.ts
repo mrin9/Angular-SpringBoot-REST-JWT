@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, Response, Request, RequestOptions, URLSearchParams,RequestMethod } from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
-import { LoginService } from './login.service';
+import { UserInfoService, LoginInfoInStorage} from '../user-info.service';
 import { AppConfig } from '../../app-config';
 
 
@@ -15,18 +15,28 @@ export class ApiRequestService {
     constructor(
         private appConfig:AppConfig,
         private http: Http,
-        private loginService:LoginService,
-        private router:Router
+        private router:Router,
+        private userInfoService:UserInfoService
     ) {}
+
+    /**
+     * This is a Global place to add all the request headers for every REST calls
+     */
+    appendAuthHeader():Headers {
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let token = this.userInfoService.getStoredToken();
+        if (token !==null) {
+            headers.append("Authorization", token);
+        }
+        return headers;
+    }
 
     /**
      * This is a Global place to define all the Request Headers that must be sent for every ajax call
      */
     getRequestOptions(requestMethod, url:string, urlParam?:URLSearchParams, body?:Object):RequestOptions {
-        let headers = new Headers({'Content-Type': 'application/json'});
-        this.loginService.appendAuthHeader(headers);
         let options = new RequestOptions({
-            headers: headers,
+            headers: this.appendAuthHeader(),
             method : requestMethod,
             url    : this.appConfig.baseApiPath + url   //this.api + url,
         });

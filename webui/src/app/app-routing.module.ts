@@ -14,7 +14,7 @@ import { OrdersComponent       }   from './pages/orders/orders.component';
 import { OrderDetailsComponent }   from './pages/order_details/order_details.component';
 import { EmployeesComponent    }   from './pages/employees/employees.component';
 
-import { AuthGuard} from './services/auth_guard.service';
+import { AuthGuard } from './services/auth_guard.service';
 import { PageNotFoundComponent }  from './pages/404/page-not-found.component';
 
 const routes: Routes = [
