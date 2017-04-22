@@ -15,6 +15,10 @@ import lombok.extern.slf4j.Slf4j;
 
 import com.app.identity.*;
 import com.app.model.user.User;
+import com.app.model.session.*;
+import static com.app.model.response.OperationResponse.*;
+import com.fasterxml.jackson.databind.*;
+
 
 /* This filter maps to /session and tries to validate the username and password */
 @Slf4j
@@ -49,6 +53,7 @@ public class GenerateTokenForUserFilter extends AbstractAuthenticationProcessing
     @Override
     protected void successfulAuthentication ( HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication authToken) throws IOException, ServletException {
         SecurityContextHolder.getContext().setAuthentication(authToken);
+        /*
         JSONObject jsonResp = new JSONObject();
         TokenUser tokenUser = (TokenUser)authToken.getPrincipal();
         String newToken = this.tokenUtil.createTokenForUser(tokenUser);
@@ -58,9 +63,28 @@ public class GenerateTokenForUserFilter extends AbstractAuthenticationProcessing
         jsonResp.put("lastName",tokenUser.getUser().getLastName());
         jsonResp.put("email",tokenUser.getUser().getEmail());
         jsonResp.put("role",tokenUser.getRole());
+        */
+
+        TokenUser tokenUser = (TokenUser)authToken.getPrincipal();
+        SessionResponse resp = new SessionResponse();
+        SessionItem respItem = new SessionItem();
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String tokenString = this.tokenUtil.createTokenForUser(tokenUser);
+
+        respItem.setFirstName(tokenUser.getUser().getFirstName());
+        respItem.setLastName(tokenUser.getUser().getLastName());
+        respItem.setUserId(tokenUser.getUser().getUserId());
+        respItem.setEmail(tokenUser.getUser().getEmail());
+        respItem.setToken(tokenString);
+
+        resp.setOperationStatus(ResponseStatusEnum.SUCCESS);
+        resp.setOperationMessage("Login Success");
+        resp.setItem(respItem);
+        String jsonRespString = ow.writeValueAsString(resp);
 
         res.setStatus(HttpServletResponse.SC_OK);
-        res.getWriter().write(jsonResp.toString());
+        res.getWriter().write(jsonRespString);
+        //res.getWriter().write(jsonResp.toString());
         res.getWriter().flush();
         res.getWriter().close();
 

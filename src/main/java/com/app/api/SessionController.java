@@ -14,9 +14,10 @@ import javax.servlet.http.*;
 
 import com.app.repo.*;
 import com.app.model.*;
+import com.app.model.session.*;
 import com.app.model.response.*;
 import com.app.model.user.*;
-
+import static com.app.model.response.OperationResponse.*;
 
 /*
 This is a dummy rest controller, for the purpose of documentation (/session) path is map to a filter
@@ -29,28 +30,35 @@ This is a dummy rest controller, for the purpose of documentation (/session) pat
 @Api(tags = {"Authentication"})
 public class SessionController {
 
-  @Autowired
-  private UserRepo userRepo;
+    @Autowired
+    private UserRepo userRepo;
 
-  @ApiResponses(value = { @ApiResponse(code = 200, message = "Will return a security token, which must be passed in every request", response = SessionResponse.class) })
-  @RequestMapping(value = "/session", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-  @ResponseBody
-  public SessionResponse newSession(@RequestBody Login login, HttpServletRequest request, HttpServletResponse response) {
-      System.out.format("\n /Session Called username=%s\n", login.getUsername());
-      User user = userRepo.findOneByUserIdAndPassword(login.getUsername(), login.getPassword()).orElse(null);
-      SessionResponse r = new SessionResponse();
-      if (user != null){
-        System.out.format("\n /User Details=%s\n", user.getFirstName());
-        r.setToken("xxx.xxx.xxx");
-        r.setFirstName(user.getFirstName());
-        r.setLastName(user.getLastName());
-        r.setEmail(user.getEmail());
-        //r.setRole(user.getRole());
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "Will return a security token, which must be passed in every request", response = SessionResponse.class) })
+    @RequestMapping(value = "/session", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public SessionResponse newSession(@RequestBody Login login, HttpServletRequest request, HttpServletResponse response) {
+        System.out.format("\n /Session Called username=%s\n", login.getUsername());
+        User user = userRepo.findOneByUserIdAndPassword(login.getUsername(), login.getPassword()).orElse(null);
+        SessionResponse resp = new SessionResponse();
+        SessionItem sessionItem = new SessionItem();
+        if (user != null){
+            System.out.format("\n /User Details=%s\n", user.getFirstName());
+            sessionItem.setToken("xxx.xxx.xxx");
+            sessionItem.setUserId(user.getUserId());
+            sessionItem.setFirstName(user.getFirstName());
+            sessionItem.setLastName(user.getLastName());
+            sessionItem.setEmail(user.getEmail());
+            //sessionItem.setRole(user.getRole());
+
+            resp.setOperationStatus(ResponseStatusEnum.SUCCESS);
+            resp.setOperationMessage("Dummy Login Success");
+            resp.setItem(sessionItem);
       }
       else{
-          r.setToken("INVALID");
+            resp.setOperationStatus(ResponseStatusEnum.ERROR);
+            resp.setOperationMessage("Login Failed");
       }
-      return r;
+      return resp;
   }
 
 }
