@@ -11,7 +11,7 @@ import io.swagger.annotations.ApiModelProperty;
 public class Employee  {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String  lastName;
     private String  firstName;

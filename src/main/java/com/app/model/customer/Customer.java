@@ -24,6 +24,5 @@ public class Customer  {
     private String state;
     private String postalCode;
     private String country;
-
     public Customer(){}
 }
