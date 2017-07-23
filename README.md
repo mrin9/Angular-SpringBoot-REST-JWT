@@ -1,7 +1,5 @@
 [![Build Status](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT.svg?branch=master)](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT)
 
-#### Those who forked or cloned the project, I re-wrote the whole project, this time with easy to understand business model that deals with order-processing, Made the repo slim, removed lot of dead code, and refactored the project in a easy to understand structure. 
-
 ## Angular 2 Frontent with SpringBoot (Java) Backend
 Application to demonstrate various parts of a service oriented RESTfull application. 
 
