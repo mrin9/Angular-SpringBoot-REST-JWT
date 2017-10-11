@@ -1,100 +1,82 @@
-<!--
-<div class="order-detail-pg pad-16">
-  <form [formGroup]="frmOrderDetail" novalidate>
-    <span style="font-size:18px; color:#006A91"> Order:{{orderId}} </span>
-    <br/>
-    <clr-tabs>
-        <clr-tab-link >Order Details</clr-tab-link>
-        <clr-tab-link> Shipping Info</clr-tab-link>
-    </clr-tabs>
-
-    <clr-tab-content [clrTabContentId]="'contentRule'">
-
-    </clr-tab-content>
-  </form>
-</div>
-
--->
-
 <div class="order-detail-pg pad-16">
     <form [formGroup]="frmOrderDetail" novalidate>
         <h3> Order:{{orderId}} </h3>
         <br/>
         <clr-tabs>
-            <clr-tab-link>Order Lines</clr-tab-link>
-            <clr-tab-link>Shipping Info</clr-tab-link>
-
-            <!-- Product List Tab -->
-            <clr-tab-content>
-                <br/>
-                <table class="s-order-header">
-                    <tr><td style="width:125px">Customer     </td> <td> {{orderDetailsRec.customerName}} ({{orderDetailsRec.customerId}}) </td></tr>
-                    <tr><td>Email        </td> <td> {{orderDetailsRec.customerEmail}} </td></tr>
-                    <tr><td>Order Status </td> <td> {{orderDetailsRec.orderStatus}} </td></tr>
-                </table>
-                <table class="s-order-line table" style="width:100%;">
-                    <thead>
-                        <tr>
-                            <th class="left" style="width:60px;">Code</th>
-                            <th class="left" style="width:110px;">Line Status</th>
-                            <th class="left" style="width:200px;">Product Name</th>
-                            <th class="left" style="width:150px;">Category</th>
-                            <th class="right" style="width:90px;">Quantity</th>
-                            <th class="right" style="width:90px;">Unit Price</th>
-                            <th style="width:50px;" colspan="2">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let o of orderDetailsRec.orderLine">
-                            <td class="left">{{o.productCode}}</td>
-                            <td class="left">{{o.orderItemStatus}}</td>
-                            <td class="left">{{o.productName}}</td>
-                            <td class="left">{{o.category}}</td>
-                            <td class="right">{{o.quantity}}</td>
-                            <td class="right">{{o.unitPrice}}</td>
-                            <td style="width:40px;"><clr-icon shape="edit"  class="is-info"></clr-icon></td>
-                            <td style="width:40px;"><clr-icon shape="trash" class="is-error"></clr-icon></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </clr-tab-content>
-
-            <!-- Shipping Tab -->
-            <clr-tab-content>
-                <section class="form-block" style="margin-top:32px">
-                    <table>
-                        <tr>
-                             <td style="width:125px;">Shipped Date </td>
-                             <td><input colspan="2" type="text" formControlName="shippedDate" style="width:120px"></td>
-                        </tr>
-                        <tr>
-                             <td>Fee</td>
-                             <td colspan="2"><input type="text" formControlName="shippedFee" style="width:60px"> </td>
-                        </tr>
-                        <tr>
-                             <td>Address</td>
-                             <td colspan="2"><input type="text" formControlName="shipAddress1"> </td>
-                        </tr>
-                        <tr>
-                             <td></td>
-                             <td colspan="2"><input type="text" formControlName="shipAddress2"> </td>
-                        </tr>
-                        <tr>
-                             <td>City</td>
-                             <td colspan="2"><input type="text" formControlName="shipCity" style="width:150px"> </td>
-                        </tr>
-                        <tr>
-                             <td>State</td>
-                             <td colspan="2"><input type="text" formControlName="shipState" style="width:150px"> </td>
-                        </tr>
-                        <tr>
-                             <td>Country</td>
-                             <td colspan="2"><input type="text" formControlName="shipCountry" style="width:150px"> </td>
-                        </tr>
+            <clr-tab>
+                <button clrTabLink>Order Line</button>
+                <clr-tab-content>
+                    <br/>
+                    <table class="s-order-header">
+                        <tr><td style="width:125px">Customer     </td> <td> {{orderDetailsRec.customerName}} ({{orderDetailsRec.customerId}}) </td></tr>
+                        <tr><td>Email        </td> <td> {{orderDetailsRec.customerEmail}} </td></tr>
+                        <tr><td>Order Status </td> <td> {{orderDetailsRec.orderStatus}} </td></tr>
                     </table>
-                </section>
-            </clr-tab-content>
+                    <table class="s-order-line table" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th class="left" style="width:60px;">Code</th>
+                                <th class="left" style="width:110px;">Line Status</th>
+                                <th class="left" style="width:200px;">Product Name</th>
+                                <th class="left" style="width:150px;">Category</th>
+                                <th class="right" style="width:90px;">Quantity</th>
+                                <th class="right" style="width:90px;">Unit Price</th>
+                                <th style="width:50px;" colspan="2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let o of orderDetailsRec.orderLine">
+                                <td class="left">{{o.productCode}}</td>
+                                <td class="left">{{o.orderItemStatus}}</td>
+                                <td class="left">{{o.productName}}</td>
+                                <td class="left">{{o.category}}</td>
+                                <td class="right">{{o.quantity}}</td>
+                                <td class="right">{{o.unitPrice}}</td>
+                                <td style="width:40px;"><clr-icon shape="edit"  class="is-info"></clr-icon></td>
+                                <td style="width:40px;"><clr-icon shape="trash" class="is-error"></clr-icon></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </clr-tab-content>
+            </clr-tab>
+
+            <clr-tab>
+                <button clrTabLink>Shipping Info</button>
+                <clr-tab-content>
+                    <section class="form-block" style="margin-top:32px">
+                        <table>
+                            <tr>
+                                <td style="width:125px;">Shipped Date </td>
+                                <td><input colspan="2" type="text" formControlName="shippedDate" style="width:120px"></td>
+                            </tr>
+                            <tr>
+                                <td>Fee</td>
+                                <td colspan="2"><input type="text" formControlName="shippedFee" style="width:60px"> </td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td colspan="2"><input type="text" formControlName="shipAddress1"> </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2"><input type="text" formControlName="shipAddress2"> </td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td colspan="2"><input type="text" formControlName="shipCity" style="width:150px"> </td>
+                            </tr>
+                            <tr>
+                                <td>State</td>
+                                <td colspan="2"><input type="text" formControlName="shipState" style="width:150px"> </td>
+                            </tr>
+                            <tr>
+                                <td>Country</td>
+                                <td colspan="2"><input type="text" formControlName="shipCountry" style="width:150px"> </td>
+                            </tr>
+                        </table>
+                    </section>
+                </clr-tab-content>
+            </clr-tab>
         </clr-tabs>
     </form>
     <br/>

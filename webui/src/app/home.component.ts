@@ -49,7 +49,7 @@ export class HomeComponent   {
         })
         .flatMap(route => route.data)
         .subscribe(data => {
-            console.log("Route data: ",data[0]);
+            console.log("Route data===: ",data[0]);
             this.selectedHeaderItemIndex = data[0].selectedHeaderItemIndex;
             this.selectedSubNavItemIndex = data[0].selectedSubNavItemIndex;
         });

@@ -56,6 +56,7 @@ export class CustomersComponent implements OnInit {
     }
 
     onScroll() {
+        console.log("bottom")
         if (this.isLoading===false){
             this.getPageData(true);
         }
