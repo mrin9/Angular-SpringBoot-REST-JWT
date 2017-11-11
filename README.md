@@ -120,6 +120,8 @@ curl -X GET --header 'Accept: application/json' --header 'Authorization: xxx.xxx
 npm install
 # build the project (this will put the files under dist folder)
 ng build --aot=false
+# DO NOT USE --prod or --aot=true flags as some 3rd party libs I used have issues with that
+
 ```
 
 ### Install Backend (SpringBoot Java)
