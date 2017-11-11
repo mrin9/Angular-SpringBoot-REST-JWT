@@ -1,9 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Headers, Response, Request, RequestOptions, URLSearchParams,RequestMethod } from '@angular/http';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { TranslateService } from './translate.service';
 import { ApiRequestService } from './api-request.service';
-
+import { HttpParams} from "@angular/common/http";
 @Injectable()
 export class CustomerService {
 
@@ -14,10 +13,10 @@ export class CustomerService {
 
     getCustomers(page?:number, size?:number): Observable<any> {
         let me = this;
-        let params: URLSearchParams = new URLSearchParams();
+        let params: HttpParams = new HttpParams();
+        params = params.append('page', typeof page === "number"? page.toString():"0");
+        params = params.append('size', typeof page === "number"? size.toString():"1000");
 
-        params.set('page', typeof page === "number"? page.toString():"0");
-        params.set('size', typeof page === "number"? size.toString():"1000");
         let customerListSubject = new Subject<any>(); // Will use this subject to emit data that we want
 
         this.apiRequest.get('api/customers',params)

@@ -1,12 +1,12 @@
 [![Build Status](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT.svg?branch=master)](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT)
 
-## Angular 2+ Frontent with SpringBoot (Java) Backend
+## Angular 5+ Frontent with SpringBoot (Java) Backend
 Application to demonstrate various parts of a service oriented RESTfull application. 
 
 ### Technology Stack
 Component         | Technology
 ---               | ---
-Frontend          | [Angular 4+](https://github.com/angular/angular)
+Frontend          | [Angular 5](https://github.com/angular/angular)
 Backend (REST)    | [SpringBoot](https://projects.spring.io/spring-boot) (Java)
 Security          | Token Based (Spring Security and [JWT](https://github.com/auth0/java-jwt) )
 REST Documentation| [Swagger UI / Springfox](https://github.com/springfox/springfox) and [ReDoc](https://github.com/Rebilly/ReDoc)
@@ -50,8 +50,8 @@ Ensure you have this installed before proceeding further
 - Java 8
 - Maven 3.3.9+ or Gradle 3.3+
 - Node 6.0 or above,  
-- npm 4 or above,   
-- Angular-cli 
+- npm 5 or above,   
+- Angular-cli 1.5.0
 
 ## About
 This is an RESTfull implementation of an order processing app based on Northwind database schema from Microsoft.
@@ -116,21 +116,21 @@ curl -X GET --header 'Accept: application/json' --header 'Authorization: xxx.xxx
 
 ### Install Frontend
 ```bash
-# Navigate to PROJECT_FOLDER/webui (should cntain package.json )
+# Navigate to PROJECT_FOLDER/webui (should contain package.json )
 npm install
 # build the project (this will put the files under dist folder)
-ng build -prod --aot=false
+ng build --aot=false
 ```
 
 ### Install Backend (SpringBoot Java)
 ```bash
-# Gradle Build : Navigate to the root folder where build.gradle is present 
-gradle build
+# Maven Build : Navigate to the root folder where pom.xml is present 
+mvn clean install
 
 #OR
 
-# Maven Build : Navigate to the root folder where pom.xml is present 
-mvn clean install
+# Gradle Build : Navigate to the root folder where build.gradle is present 
+gradle build
 ```
 
 ### Start the API and WebUI server
@@ -138,11 +138,11 @@ mvn clean install
 # Start the server (9119)
 # port and other configurations for API servere is in [./src/main/resources/application.properties](/src/main/resources/application.properties) file
 
-# If you build with gradle jar location will be 
-java -jar ./build/libs/app-1.0.0.jar
-
 # If you build with maven jar location will be 
 java -jar ./target/app-1.0.0.jar
+
+# If you build with gradle jar location will be 
+java -jar ./build/libs/app-1.0.0.jar
 ```
 
 ### Accessing Application

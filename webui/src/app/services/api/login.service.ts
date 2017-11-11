@@ -1,5 +1,4 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 
 import { Observable,Subject } from 'rxjs';
@@ -19,7 +18,6 @@ export class LoginService {
     public landingPage:string = "/home/dashboard/order";
     constructor(
         private router:Router,
-        private http: Http,
         private userInfoService: UserInfoService,
         private apiRequest: ApiRequestService
     ) {}
@@ -46,7 +44,7 @@ export class LoginService {
                         "user"       : {
                             "userId"     : jsonResp.item.userId,
                             "email"      : jsonResp.item.emailAddress,
-                            "displayName": jsonResp.item.firstName + " " + jsonResp.item.lastNameName,
+                            "displayName": jsonResp.item.firstName + " " + jsonResp.item.lastName,
                             "token"      : jsonResp.item.token,
                         }
                     };

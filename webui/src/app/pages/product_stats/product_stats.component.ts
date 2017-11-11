@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/api/product.service';
 import { Router } from '@angular/router';
 import { NgxChartsModule} from '@swimlane/ngx-charts';
-import 'rxjs/add/operator/mergeMap';
 
 @Component({
 	selector: 's-product_stats-pg',

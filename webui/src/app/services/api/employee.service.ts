@@ -1,9 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Headers, Response, Request, RequestOptions, URLSearchParams,RequestMethod } from '@angular/http';
 import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { ApiRequestService } from './api-request.service';
 import { TranslateService } from './translate.service';
-
+import { HttpParams} from "@angular/common/http";
 
 @Injectable()
 export class EmployeeService {
@@ -15,9 +14,9 @@ export class EmployeeService {
     getEmployees(page?:number, size?:number): Observable<any> {
         //Create Request URL params
         let me = this;
-        let params: URLSearchParams = new URLSearchParams();
-        params.set('page', typeof page === "number"? page.toString():"0");
-        params.set('size', typeof page === "number"? size.toString():"1000");
+        let params: HttpParams = new HttpParams();
+        params = params.append('page', typeof page === "number"? page.toString():"0");
+        params = params.append('size', typeof page === "number"? size.toString():"1000");
         return this.apiRequest.get('api/employees',params);
     }
 

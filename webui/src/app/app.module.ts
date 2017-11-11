@@ -2,26 +2,26 @@
 import { BrowserModule }    from '@angular/platform-browser';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule }         from '@angular/core';
-import { HttpModule }       from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule }     from '@angular/router';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 //Third Party Modules
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxChartsModule }    from '@swimlane/ngx-charts';
-import { ClarityModule }      from 'clarity-angular';
+import { NgxChartsModule    } from '@swimlane/ngx-charts';
+import { ClarityModule      } from 'clarity-angular';
 
 //Local App Modules
 import { AppRoutingModule } from './app-routing.module';
 
 // Directives
-import { TrackScrollDirective }      from './directives/track_scroll/track_scroll.directive';
+import { TrackScrollDirective } from './directives/track_scroll/track_scroll.directive';
 
 
 // Components
-import { BadgeComponent }     from './components/badge/badge.component';
-import { LegendComponent }    from './components/legend/legend.component';
-import { LogoComponent }      from './components/logo/logo.component';
+import { BadgeComponent  } from './components/badge/badge.component';
+import { LegendComponent } from './components/legend/legend.component';
+import { LogoComponent   } from './components/logo/logo.component';
 
 //Pages  -- Pages too are components, they contain other components
 import { AppComponent }       from './app.component';
@@ -31,11 +31,11 @@ import { LogoutComponent       } from './pages/logout/logout.component';
 import { DashboardComponent    } from './pages/dashboard/dashboard.component';
 import { OrderStatsComponent   } from './pages/order_stats/order_stats.component';
 import { ProductStatsComponent } from './pages/product_stats/product_stats.component';
-import { ProductsComponent   } from './pages/products/products.component';
-import { CustomersComponent  } from './pages/customers/customers.component';
-import { OrdersComponent     } from './pages/orders/orders.component';
+import { ProductsComponent     } from './pages/products/products.component';
+import { CustomersComponent    } from './pages/customers/customers.component';
+import { OrdersComponent       } from './pages/orders/orders.component';
 import { OrderDetailsComponent } from './pages/order_details/order_details.component';
-import { EmployeesComponent  } from './pages/employees/employees.component';
+import { EmployeesComponent    } from './pages/employees/employees.component';
 
 
 // Services
@@ -58,7 +58,7 @@ import { EmployeeService  } from './services/api/employee.service';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
 
     // Thirdparty Module
     NgxDatatableModule,

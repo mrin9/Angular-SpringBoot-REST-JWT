@@ -17,7 +17,7 @@ import { EmployeesComponent    }   from './pages/employees/employees.component';
 import { AuthGuard } from './services/auth_guard.service';
 import { PageNotFoundComponent }  from './pages/404/page-not-found.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   //Important: The sequence of path is important as the router go over then in sequential manner
   { path: '', redirectTo: '/home/dashboard/order', pathMatch: 'full' },
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate:[AuthGuard],
     children:[  // Children paths are appended to the parent path
-        { path: '', redirectTo: '/home/dashboard/order', pathMatch: 'full' },  // Default path (if no deep path is specified for home component like webui/home then it will by default show ProductsComponent )
+        { path: '', redirectTo: '/home/dashboard/order', pathMatch: 'full', data:[{selectedHeaderItemIndex:1, selectedSubNavItemIndex:-1}] },  // Default path (if no deep path is specified for home component like webui/home then it will by default show ProductsComponent )
         {
             path     : 'dashboard',
             component: DashboardComponent,
@@ -43,9 +43,9 @@ const routes: Routes = [
         { path:'employees' , component: EmployeesComponent   , data:[{selectedHeaderItemIndex:4, selectedSubNavItemIndex:-1}]  },
     ]
   },
-  { path: 'login',  component: LoginComponent  },
-  { path: 'logout', component: LogoutComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: 'login' , component: LoginComponent       , data:[{selectedHeaderItemIndex:-1, selectedSubNavItemIndex:-1}] },
+  { path: 'logout', component: LogoutComponent      , data:[{selectedHeaderItemIndex:-1, selectedSubNavItemIndex:-1}] },
+  { path: '**'    , component: PageNotFoundComponent, data:[{selectedHeaderItemIndex:-1, selectedSubNavItemIndex:-1}] }
 
 ];
 @NgModule({
