@@ -3,8 +3,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "serve": "ng serve -prod -aot=false",
-    "build": "ng build -prod -aot=false"
+    "ng": "ng",
+    "start": "ng serve --aot",
+    "build": "ng build --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +38,7 @@
     "@angular/compiler-cli": "5.1.0-beta.0",
     "@angular/language-service": "5.1.0-beta.0",
     "@types/node": "~6.0.60",
+    "codelyzer": "~4.0.1",
     "ts-node": "3.3.0",
     "tslint": "5.8.0",
     "typescript": "^2.6.1"
