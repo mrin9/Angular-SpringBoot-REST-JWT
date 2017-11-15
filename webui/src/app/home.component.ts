@@ -31,10 +31,10 @@ export class HomeComponent   {
                 { label:"Product Stats", href:"/home/dashboard/product"}
             ]
         },
-        { label: 'Orders'   , href: '/home/orders'    },
-        { label: 'Products' , href: '/home/products'  },
-        { label: 'Customers', href: '/home/customers' },
-        { label: 'Employees', href: '/home/employees' }
+        { label: 'Orders'   , href: '/home/orders'    , subNav: []},
+        { label: 'Products' , href: '/home/products'  , subNav: []},
+        { label: 'Customers', href: '/home/customers' , subNav: []},
+        { label: 'Employees', href: '/home/employees' , subNav: []}
     ];
 
     public selectedHeaderItemIndex:number=0;

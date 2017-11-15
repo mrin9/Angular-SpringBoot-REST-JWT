@@ -40,6 +40,9 @@
     }
   ],
   "defaults": {
-    "styleExt": "scss"
+    "styleExt": "scss",
+    "component": {
+      "viewEncapsulation": "Emulated"
+    }
   }
 }
