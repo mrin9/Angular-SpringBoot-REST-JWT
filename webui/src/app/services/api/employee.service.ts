@@ -16,7 +16,7 @@ export class EmployeeService {
         let me = this;
         let params: HttpParams = new HttpParams();
         params = params.append('page', typeof page === "number"? page.toString():"0");
-        params = params.append('size', typeof page === "number"? size.toString():"1000");
+        params = params.append('size', typeof size === "number"? size.toString():"1000");
         return this.apiRequest.get('api/employees',params);
     }
 
