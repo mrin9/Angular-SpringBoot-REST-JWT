@@ -51,7 +51,7 @@ Ensure you have this installed before proceeding further
 - Maven 3.3.9+ or Gradle 3.3+
 - Node 6.0 or above,  
 - npm 5 or above,   
-- Angular-cli 1.5.0
+- Angular-cli 1.6.0-rc.0 (Ensure you use the exact same version or use other versions at your own risk)
 
 ## About
 This is an RESTfull implementation of an order processing app based on Northwind database schema from Microsoft.
@@ -119,8 +119,7 @@ curl -X GET --header 'Accept: application/json' --header 'Authorization: xxx.xxx
 # Navigate to PROJECT_FOLDER/webui (should contain package.json )
 npm install
 # build the project (this will put the files under dist folder)
-ng build --aot=false
-# DO NOT USE --prod or --aot=true flags as some 3rd party libs I used have issues with that
+ng build --prod --aot
 
 ```
 
