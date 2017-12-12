@@ -111,16 +111,15 @@ curl command (replace xxx.xxx.xxx with the token that you received in above comm
 curl -X GET --header 'Accept: application/json' --header 'Authorization: xxx.xxx.xxx' 'http://localhost:9119/version'
 ``` 
 
-**As of this writing the Angular Frontend is adapted to make it work WITHOUT the security. If you enable the security you must update the frontend to store and send the security token with evry API request**
-
-
-### Install Frontend
+### Install Frontend (optional step)
+Code for frontend is allready compiled and saved under the webui/dist 
+when building the backend app (maven) it will pickup the code from here. However if you modified the frontend
+code and want your changes to get reflected then execute a frontend build
 ```bash
 # Navigate to PROJECT_FOLDER/webui (should contain package.json )
 npm install
 # build the project (this will put the files under dist folder)
-ng build --prod --aot
-
+ng build --prod --aot=false
 ```
 
 ### Install Backend (SpringBoot Java)
@@ -162,12 +161,16 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
 ```
 or POST the username and password to http://localhost:9119/session
 
-
 after you get the authentication token you must provide this in the header for all the protected urls 
 
 ```bash
 curl -X GET --header 'Accept: application/json' --header 'Authorization: [replace this with token ]' 'http://localhost:9119/version'
 ```
+
+
+**To get an authentication token** 
+
+
 
 ### Screenshots
 #### Login

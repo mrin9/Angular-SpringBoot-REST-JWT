@@ -9,8 +9,13 @@ export class TrackScrollDirective {
 
     @HostListener('document:scroll', [])
     public track() {
+        /*
         if (document.body.scrollHeight == window.scrollY + window.innerHeight) {
              this.bottom.emit(true);
+        }
+        */
+        if (Math.abs(document.body.scrollHeight - (window.scrollY + window.innerHeight)) <= 100){
+            this.bottom.emit(true);
         }
     }
 }
