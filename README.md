@@ -51,7 +51,7 @@ Ensure you have this installed before proceeding further
 - Maven 3.3.9+ or Gradle 3.3+
 - Node 6.0 or above,  
 - npm 5 or above,   
-- Angular-cli 1.6.0-rc.0 (Ensure you use the exact same version or use other versions at your own risk)
+- Angular-cli 1.6.3
 
 ## About
 This is an RESTfull implementation of an order processing app based on Northwind database schema from Microsoft.
