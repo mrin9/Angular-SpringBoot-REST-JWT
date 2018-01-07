@@ -1,0 +1,63 @@
+html {
+  overflow-x: hidden;
+  border-spacing:0;
+  margin:0;
+  margin-right: calc(-1 * (100vw - 100%));
+}
+
+@font-face {
+    font-family: metropolis ;
+    src: url(../fonts/Metropolis-Thin.otf);
+}
+@font-face {
+    font-family: metropolis-reg ;
+    src: url(../fonts/Metropolis-Regular.otf);
+}
+
+.path .toggleOperation {font-family:Anonymous Pro,Menlo,Consolas,Bitstream Vera Sans Mono,Courier New,monospace;}
+
+li.operation div.heading{
+	border-width: 2px !important;
+	padding: 3px !important;
+}
+.markdown p{
+	font-family: metropolis-reg;
+}
+
+.http_method a{font-family:Anonymous Pro,Menlo,Consolas,Bitstream Vera Sans Mono,Courier New,monospace;}
+
+#header #logo .logo__img{
+	margin-top:8px !important;;
+}
+
+.swagger-section #header{
+	padding: 10px !important;
+	background-color:whitesmoke !important;
+	height:36px !important;
+	
+}
+#auth_container{
+	width:auto !important;
+	height:auto !important;
+	padding:0 2px;
+}
+#auth_container .authorize__btn, .header__btn{
+	padding: 8px !important;
+	border-radius:2px !important;
+	background-color:#ff6c0c !important;
+	font-family: metropolis-reg !important; 
+	    
+	
+}
+.swagger-section #api_selector input{
+	padding:5px !important;
+	border: 2px solid orange;
+	border-radius: 2px;
+}
+a:hover{
+	text-decoration:none !important;
+}
+
+#header{
+	 box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+}
