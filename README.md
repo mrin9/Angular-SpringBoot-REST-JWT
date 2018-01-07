@@ -2,9 +2,9 @@
 
 
 ### Demo 
-[WebApp](http://104.196.240.40:9119)
-[Api Doc (swagger)](http://104.196.240.40:9119/swagger/index.html)
-[Api Doc (redoc)](http://104.196.240.40:9119/redoc/index.html)
+- [WebApp](http://104.196.240.40:9119)
+- [Api Doc (swagger)](http://104.196.240.40:9119/swagger/index.html)
+- [Api Doc (redoc)](http://104.196.240.40:9119/redoc/index.html)
 
 
 ## Angular 5+ Frontent with SpringBoot (Java) Backend
