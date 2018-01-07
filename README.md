@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT.svg?branch=master)](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT)
 
+
+### [Demo](http://104.196.240.40:9119)
+
 ## Angular 5+ Frontent with SpringBoot (Java) Backend
 Application to demonstrate various parts of a service oriented RESTfull application. 
 
