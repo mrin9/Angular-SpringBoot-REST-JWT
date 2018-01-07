@@ -42,10 +42,12 @@ public class TokenUtil {
 
         User user = new User();
         user.setUserId( (String)claims.get("userId"));
-        //user.setCustomerId((Integer)claims.get("customerId"));
-        //user.setRole((String)claims.get("role"));
         user.setRole(Role.valueOf((String)claims.get("role")));
-        return new TokenUser(user);
+        if (user.getUserId() != null && user.getRole() != null) {
+            return new TokenUser(user);
+        } else {
+            return null;
+        }
     }
 
     public String createTokenForUser(TokenUser tokenUser) {
