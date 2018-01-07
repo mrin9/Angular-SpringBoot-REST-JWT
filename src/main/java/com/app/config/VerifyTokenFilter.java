@@ -43,7 +43,6 @@ public class VerifyTokenFilter extends GenericFilterBean {
         }
         finally {
             SecurityContextHolder.getContext().setAuthentication(null);
-            return;  // always return void
         }
     }
 
