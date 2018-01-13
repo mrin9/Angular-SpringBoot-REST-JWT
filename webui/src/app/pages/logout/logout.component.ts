@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
+import { UserInfoService, LoginInfoInStorage} from '../../services/user-info.service';
 
 @Component({
 	selector   : 's-logout-pg',
@@ -8,7 +9,7 @@ import { ActivatedRoute, Router} from '@angular/router';
 })
 
 export class LogoutComponent {
-  constructor(private router: Router, private activatedRoute: ActivatedRoute){
-    localStorage.clear();
+  constructor(private userInfoService: UserInfoService){
+    this.userInfoService.removeUserInfo();
   }
 }
