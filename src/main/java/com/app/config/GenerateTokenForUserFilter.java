@@ -40,7 +40,17 @@ public class GenerateTokenForUserFilter extends AbstractAuthenticationProcessing
             JSONObject userJSON = new JSONObject(jsonString);
             String username = userJSON.getString("username");
             String password = userJSON.getString("password");
-            log.info("username:{} and paswword:{} \n", username, password);
+            String browser = request.getHeader("User-Agent")!= null?request.getHeader("User-Agent"):"";
+            String ip = request.getRemoteAddr();
+            String forwardIp = request.getHeader("x-forwarded-fo")!= null?request.getHeader("x-forwarded-fo"):"";
+
+            log.info("ip:{}, \nproxy-ip:{} \nbrowser:{} \nuser:{} \npwd:{} \n----",
+                request.getRemoteAddr(),
+                request.getHeader("x-forwarded-for"),
+                request.getHeader("User-Agent"),
+                username,
+                password
+            );
             //final UsernamePasswordAuthenticationToken loginToken = new UsernamePasswordAuthenticationToken("demo", "demo");
             final UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
             return getAuthenticationManager().authenticate(authToken); // This will take to successfulAuthentication or faliureAuthentication function
