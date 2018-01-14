@@ -37,12 +37,10 @@ public class SessionController {
     @RequestMapping(value = "/session", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public SessionResponse newSession(@RequestBody Login login, HttpServletRequest request, HttpServletResponse response) {
-        System.out.format("\n /Session Called username=%s\n", login.getUsername());
         User user = userRepo.findOneByUserIdAndPassword(login.getUsername(), login.getPassword()).orElse(null);
         SessionResponse resp = new SessionResponse();
         SessionItem sessionItem = new SessionItem();
         if (user != null){
-            System.out.format("\n /User Details=%s\n", user.getFirstName());
             sessionItem.setToken("xxx.xxx.xxx");
             sessionItem.setUserId(user.getUserId());
             sessionItem.setFirstName(user.getFirstName());

@@ -42,7 +42,7 @@ public class GenerateTokenForUserFilter extends AbstractAuthenticationProcessing
             String password = userJSON.getString("password");
             String browser = request.getHeader("User-Agent")!= null?request.getHeader("User-Agent"):"";
             String ip = request.getRemoteAddr();
-            log.info("\nip:{} \nbrowser:{} \nuser:{} \npwd:{} \n----",ip,browser,username,password);
+            log.info("\nip:{} \nbrowser:{} \n----",ip,browser);
 
             //final UsernamePasswordAuthenticationToken loginToken = new UsernamePasswordAuthenticationToken("demo", "demo");
             final UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);

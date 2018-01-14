@@ -54,10 +54,6 @@ public class ProductController {
     public OperationResponse addNewProduct(@RequestBody Product product, HttpServletRequest req) {
 
         OperationResponse resp = new OperationResponse();
-        System.out.println("ID:" + product.getId());
-        System.out.println("Name:" + product.getProductName());
-        System.out.println("Code:" + product.getProductCode());
-        System.out.println("Category:" + product.getCategory());
 
         if (this.productRepo.exists(product.getId()) ){
             resp.setOperationStatus(ResponseStatusEnum.ERROR);

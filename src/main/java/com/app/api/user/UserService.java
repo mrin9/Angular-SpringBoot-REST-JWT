@@ -30,9 +30,7 @@ public class UserService {
 
 	public User getLoggedInUser() {
 		String loggedInUserId = this.getLoggedInUserId();
-		System.out.format("\n1. Inside >> getLoggedInUser: %s", loggedInUserId);
 		User user = this.getUserInfoByUserId(loggedInUserId);
-		System.out.format("\n2. After Find User: %s", loggedInUserId);
 		return user;
 	}
 
