@@ -2,10 +2,18 @@
 
 
 ### Demo 
-- [WebApp](http://104.196.240.40:9119)
+I am hosting the app on free tire of google cloud and heroku. These instances shuts down automatically after some time of inactivity, and starts up when someone access it. This messesup the H2 memory db.
+
+the Heroku instance can automatically restart the app includining the H2 database, so if login is not working in google cloud instance try Heroku instance, the startup takes a long time so be patient.
+
+#### Google Cloud Hosted
+- [WebApp (hosted in Google Cloud)](http://104.196.240.40:9119)
 - [Api Doc (swagger)](http://104.196.240.40:9119/swagger/index.html)
 - [Api Doc (redoc)](http://104.196.240.40:9119/redoc/index.html)
 
+#### Heroku Hosted
+- [WebApp (hosted in Heroku)](https://infomud.herokuapp.com/)
+- [Api Doc (swagger)]https://infomud.herokuapp.com/swagger/index.html
 
 ## Angular 5+ Frontent with SpringBoot (Java) Backend
 Application to demonstrate various parts of a service oriented RESTfull application. 
