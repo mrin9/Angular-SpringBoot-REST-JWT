@@ -13,7 +13,7 @@ the Heroku instance can automatically restart the app includining the H2 databas
 
 #### Heroku Hosted
 - [WebApp (hosted in Heroku)](https://infomud.herokuapp.com/)
-- [Api Doc (swagger)]https://infomud.herokuapp.com/swagger/index.html
+- [Api Doc (swagger)](https://infomud.herokuapp.com/swagger/index.html)
 
 ## Angular 5+ Frontent with SpringBoot (Java) Backend
 Application to demonstrate various parts of a service oriented RESTfull application. 
