@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 //Third Party Modules
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxChartsModule    } from '@swimlane/ngx-charts';
-import { ClarityModule      } from 'clarity-angular';
+import { ClarityModule      } from '@clr/angular';
 
 //Local App Modules
 import { AppRoutingModule } from './app-routing.module';
