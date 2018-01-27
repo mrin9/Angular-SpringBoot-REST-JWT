@@ -26,6 +26,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         if (this.userInfoService.isLoggedIn()) {
             return true;
         }
+        console.log("User is not logged - This routing guard prvents redirection to any routes that needs logging.");
         //Store the original url in login service and then redirect to login page
         this.loginService.landingPage = url;
         this.router.navigate(['login',]);

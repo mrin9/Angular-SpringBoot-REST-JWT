@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Observable,Subject } from 'rxjs';
+import { Observable,Subject,BehaviorSubject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { UserInfoService, LoginInfoInStorage} from '../user-info.service';
@@ -30,7 +30,17 @@ export class LoginService {
             "username": username,
             "password": password,
         }
-        let loginDataSubject:Subject<any> = new Subject<any>(); // Will use this subject to emit data that we want after ajax login attempt
+        /*
+            Using BehaviorSubject instead of Subject
+            In Angular services are initialized before the components, if any component is
+            subscribing, it will only receive events which are executed after subscription.
+            therefore if you put a syncronize next() in the service, the component wont get it.
+
+            A BehaviourSubject will always provide the values wheather the subscription happened after or before event
+
+        */
+
+        let loginDataSubject:BehaviorSubject<any> = new BehaviorSubject<any>([]); // Will use this BehaviorSubject to emit data that we want after ajax login attempt
         let loginInfoReturn:LoginInfoInStorage; // Object that we want to send back to Login Page
 
         this.apiRequest.post('session', bodyData)
@@ -61,6 +71,13 @@ export class LoginService {
                     };
                 }
                 loginDataSubject.next(loginInfoReturn);
+            },
+            err => {
+              loginInfoReturn = {
+                "success": false,
+                "message": err.url + " >>> " + err.statusText +  "[" + err.status +"]",
+                "landingPage": "/login"
+              };
             });
 
             return loginDataSubject;
