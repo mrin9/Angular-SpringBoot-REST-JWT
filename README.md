@@ -1,3 +1,4 @@
+[![Backers on Open Collective](https://opencollective.com/angular-springboot-rest-jwt/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/angular-springboot-rest-jwt/sponsors/badge.svg)](#sponsors)
 [![Build Status](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT.svg?branch=master)](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT)
 
 
@@ -213,3 +214,33 @@ curl -X GET --header 'Accept: application/json' --header 'Authorization: [replac
 ---
 #### Database Schema
 ![ER Diagram](/screenshots/db_schema.png?raw=true)
+
+## Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="graphs/contributors"><img src="https://opencollective.com/angular-springboot-rest-jwt/contributors.svg?width=890" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/angular-springboot-rest-jwt#backer)]
+
+<a href="https://opencollective.com/angular-springboot-rest-jwt#backers" target="_blank"><img src="https://opencollective.com/angular-springboot-rest-jwt/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/angular-springboot-rest-jwt#sponsor)]
+
+<a href="https://opencollective.com/angular-springboot-rest-jwt/sponsor/0/website" target="_blank"><img src="https://opencollective.com/angular-springboot-rest-jwt/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/angular-springboot-rest-jwt/sponsor/1/website" target="_blank"><img src="https://opencollective.com/angular-springboot-rest-jwt/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/angular-springboot-rest-jwt/sponsor/2/website" target="_blank"><img src="https://opencollective.com/angular-springboot-rest-jwt/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/angular-springboot-rest-jwt/sponsor/3/website" target="_blank"><img src="https://opencollective.com/angular-springboot-rest-jwt/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/angular-springboot-rest-jwt/sponsor/4/website" target="_blank"><img src="https://opencollective.com/angular-springboot-rest-jwt/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/angular-springboot-rest-jwt/sponsor/5/website" target="_blank"><img src="https://opencollective.com/angular-springboot-rest-jwt/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/angular-springboot-rest-jwt/sponsor/6/website" target="_blank"><img src="https://opencollective.com/angular-springboot-rest-jwt/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/angular-springboot-rest-jwt/sponsor/7/website" target="_blank"><img src="https://opencollective.com/angular-springboot-rest-jwt/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/angular-springboot-rest-jwt/sponsor/8/website" target="_blank"><img src="https://opencollective.com/angular-springboot-rest-jwt/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/angular-springboot-rest-jwt/sponsor/9/website" target="_blank"><img src="https://opencollective.com/angular-springboot-rest-jwt/sponsor/9/avatar.svg"></a>
+
+
