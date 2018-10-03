@@ -1,13 +1,12 @@
+### Angular and SpringBoot both have way too much of magic, if you are one who like to be in controll of their code, then check out my project on pure Java 11 (With Modules), Jersey and Vue.JS for UI
+It is still a WIP... 
+#### [WebApp with Java 11, Jersey and VueJS](https://github.com/mrin9/Modular-Java-Jersey-Vue)
+
 [![Backers on Open Collective](https://opencollective.com/angular-springboot-rest-jwt/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/angular-springboot-rest-jwt/sponsors/badge.svg)](#sponsors)
 [![Build Status](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT.svg?branch=master)](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT)
 
 
-### Demo 
-I am hosting the app on free tire of google cloud and heroku. These instances shuts down automatically after some time of inactivity, and starts up when someone access it. This messesup the H2 memory db.
-
-the Heroku instance can automatically restart the app includining the H2 database, so if login is not working in google cloud instance try Heroku instance, the startup takes a long time so be patient.
-
-#### Google Cloud Hosted
+### Demo (Google Cloud Hosted)
 - [WebApp](http://104.196.240.40:9119)
 - [Api Doc (swagger)](http://104.196.240.40:9119/swagger/index.html)
 - [Api Doc (redoc)](http://104.196.240.40:9119/redoc/index.html)
@@ -214,11 +213,6 @@ curl -X GET --header 'Accept: application/json' --header 'Authorization: [replac
 ---
 #### Database Schema
 ![ER Diagram](/screenshots/db_schema.png?raw=true)
-
-## Contributors
-
-This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
-<a href="graphs/contributors"><img src="https://opencollective.com/angular-springboot-rest-jwt/contributors.svg?width=890" /></a>
 
 
 ## Backers
