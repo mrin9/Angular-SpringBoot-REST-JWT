@@ -2,8 +2,8 @@
 [![Backers on Open Collective](https://opencollective.com/angular-springboot-rest-jwt/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/angular-springboot-rest-jwt/sponsors/badge.svg)](#sponsors)
 [![Build Status](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT.svg?branch=master)](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT)
 
-#### Angular and SpringBoot both have way too much of magic, if you are one who like to be in controll of their code, then check out my project on pure Java 11 (With Modules), Jersey and Vue.JS for UI
-[WebApp with Java 11, Jersey and VueJS](https://github.com/mrin9/Modular-Java-Jersey-Vue)
+> Angular and SpringBoot both have way too much of magic, if you are one who like to be in controll of their code, then check > out my project on pure Java 11 (With Modules), Jersey and Vue.JS for UI
+> [WebApp with Java 11, Jersey and VueJS](https://github.com/mrin9/Modular-Java-Jersey-Vue)
 
 ## Angular 5+ Frontent with SpringBoot (Java) Backend
 Application to demonstrate various parts of a service oriented RESTfull application. 
