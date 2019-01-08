@@ -8,13 +8,8 @@
 ## Angular 5+ Frontent with SpringBoot (Java) Backend
 Application to demonstrate various parts of a service oriented RESTfull application. 
 
-
-### Demo (Google Cloud Hosted)
-- [WebApp](http://104.196.240.40:9119)
-- [Api Doc (swagger)](http://104.196.240.40:9119/swagger/index.html)
-- [Api Doc (redoc)](http://104.196.240.40:9119/redoc/index.html)
-
 #### Heroku Hosted
+Allow couple of minutes to let the instance start
 - [WebApp](https://infomud.herokuapp.com/)
 - [Api Doc (swagger)](https://infomud.herokuapp.com/swagger/index.html)
 
